@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CustomerAPIResolver } from './customer-api-resolver';
-import { AstModule } from 'ast-ast';
-import { ToastModule } from 'ast-core';
+import { AstModule } from 'ast';
+import { ToastModule } from 'core';
 import { HeaderComponent } from './fragments/header/header.component';
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BackendService, Method } from 'ast-core';
+import { BackendService, Method } from 'core';
 import { Observable } from 'rxjs';
 import { CustomerDto } from '../dtos/customer-dto';
 

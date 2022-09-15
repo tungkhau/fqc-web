@@ -15,9 +15,23 @@
         <h6 class="semi-bold">{{ user?.name }}</h6>
         <h6>{{ user?.id }}</h6>
       </div>
-      <div class="user-avatar d-flex align-items-center ms-2">
+      <button
+        astButtonIcon
+        [matMenuTriggerFor]="menu"
+        class="user-avatar d-flex align-items-center ms-2"
+      >
         <i class="fa-solid fa-circle-user user-icon"></i>
-      </div>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <i class="fa-solid fa-lock"></i>
+          <span class="ms-2">Đổi mật khẩu</span>
+        </button>
+        <button mat-menu-item class="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span class="ms-2">Đăng xuất</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
   <nav class="header-navbar">

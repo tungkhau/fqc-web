@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Button, Column } from 'ast-ast';
+import { Button, Column } from 'ast';
 import { BehaviorSubject } from 'rxjs';
 import { CustomersService } from './customers.service';
 import { CustomersConnectorService } from './data/services/customer-connector.service';

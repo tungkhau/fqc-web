@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { AstModule } from 'ast-ast';
+import { AstModule } from 'ast';
 import { CustomersComponent } from './customers.component';
-import { BackendService, CoreModule } from 'ast-core';
+import { BackendService, CoreModule } from 'core';
 import { RouterModule } from '@angular/router';
 import { CustomersConnectorService } from './data/services/customer-connector.service';
 import { CreateCustomerDialogComponent } from './fragments/create-customer-dialog/create-customer-dialog.component';
