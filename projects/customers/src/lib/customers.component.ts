@@ -70,7 +70,7 @@ export class CustomersComponent implements OnInit {
     private customersConnectorService: CustomersConnectorService,
     private customersService: CustomersService,
     private activatedRoute: ActivatedRoute,
-    public createCustomerDialog: MatDialog
+    public dialog: MatDialog
   ) {
     this.activatedRoute.data.subscribe((data) => {
       this.customersConnectorService.setApiUrl(data['apiUrl']);
@@ -84,9 +84,10 @@ export class CustomersComponent implements OnInit {
   }
 
   onOpenCreateCustomerDialog() {
-    const dialogRef = this.createCustomerDialog.open(
-      CreateCustomerDialogComponent
-    );
+    console.log('open');
+
+    const dialogRef = this.dialog.open(CreateCustomerDialogComponent);
+    console.log(dialogRef);
   }
 
   onEditCustomer(i: number) {
@@ -94,9 +95,7 @@ export class CustomersComponent implements OnInit {
       ...this.customerData.getValue()[i],
     };
 
-    const dialogRef = this.createCustomerDialog.open(
-      EditCustomerDialogComponent
-    );
+    const dialogRef = this.dialog.open(EditCustomerDialogComponent);
   }
 
   onDeleteCustomer(i: number) {}

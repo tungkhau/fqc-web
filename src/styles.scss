@@ -11,6 +11,11 @@ body {
   height: 100%;
 }
 
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 app-root {
   height: 100%;
 }
@@ -21,6 +26,5 @@ body {
 
 .cdk-global-overlay-wrapper,
 .cdk-overlay-container {
-  display: none;
   z-index: 9999 !important;
 }
