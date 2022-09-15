@@ -18,8 +18,6 @@ export * from './lib/components/tables/tbl-info/tbl-info.component';
 
 export * from './lib/components/cards/card-empty/card-empty.component';
 
-export * from './lib/fragments/header/header.component';
-
 // Directives
 export * from './lib/directives/input/input.directive';
 export * from './lib/directives/button-solid/button-solid.directive';

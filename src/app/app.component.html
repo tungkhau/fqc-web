@@ -1,5 +1,7 @@
 <div class="app d-flex flex-column">
-  <ast-header brandText="ASSISTANT" [routes]="routes"></ast-header>
+  <div *ngIf="user">
+    <app-header brandText="ASSISTANT" [routes]="routes"></app-header>
+  </div>
   <div class="flex-fill">
     <router-outlet></router-outlet>
   </div>

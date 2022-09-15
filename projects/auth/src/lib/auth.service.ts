@@ -6,10 +6,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
   user = new BehaviorSubject<{
-    name: string | null;
-    role: string | null;
+    id: string;
+    name: string;
+    role: string;
     permissions: any;
-  }>({ name: null, role: null, permissions: null });
+  } | null>(null);
 
   constructor() {}
 
@@ -19,6 +20,7 @@ export class AuthService {
 
   login() {
     this.user.next({
+      id: 'BE2001',
       name: 'Nguyễn Văn Tèo',
       role: 'employee',
       permissions: { viewProducts: true, viewCustomers: true },

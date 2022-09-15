@@ -1,6 +1,6 @@
-@import "../../../assets/styles/init.scss";
+@import "../../../styles.scss";
 
-.ast-header {
+.app-header {
   background-color: #fff;
 
   padding: 0 1rem;
@@ -35,6 +35,13 @@
       a {
         color: $color-theme !important;
       }
+    }
+  }
+
+  .user-avatar {
+    .user-icon {
+      font-size: 2.25rem;
+      color: $color-theme;
     }
   }
 }

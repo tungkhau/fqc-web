@@ -8,9 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomerAPIResolver } from './customer-api-resolver';
 import { AstModule } from 'ast-ast';
 import { ToastModule } from 'ast-core';
+import { HeaderComponent } from './fragments/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     AstModule,
     AppRoutingModule,

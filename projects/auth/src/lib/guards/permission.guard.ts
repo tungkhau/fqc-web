@@ -29,7 +29,7 @@ export class PermissionGuard implements CanActivate {
     return this.authService.user?.pipe(
       take(1),
       map((user) => {
-        if (user.permissions[route.data['expectedPermission']] === true)
+        if (user && user.permissions[route.data['expectedPermission']] === true)
           return true;
 
         return this.router.createUrlTree(['/auth/login']);

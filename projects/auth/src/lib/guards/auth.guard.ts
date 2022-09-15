@@ -29,10 +29,9 @@ export class AuthGuard implements CanActivate, CanLoad {
     return this.authService.user?.pipe(
       take(1),
       map((user) => {
-        const userName = user.name;
-        if (userName != null) return true;
+        if (!user) return this.router.createUrlTree(['/auth']);
 
-        return this.router.createUrlTree(['/auth']);
+        return true;
       })
     );
   }
@@ -48,10 +47,9 @@ export class AuthGuard implements CanActivate, CanLoad {
     return this.authService.user?.pipe(
       take(1),
       map((user) => {
-        const userName = user.name;
-        if (userName != null) return true;
+        if (!user) return this.router.createUrlTree(['/auth']);
 
-        return this.router.createUrlTree(['/auth']);
+        return true;
       })
     );
   }

@@ -133,6 +133,10 @@
   flex-direction: column;
 }
 
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
 .flex-fill {
   flex: 1 1 auto !important;
 }
@@ -151,4 +155,8 @@
 
 .align-items-center {
   align-items: center;
+}
+
+.align-items-end {
+  align-items: flex-end;
 }

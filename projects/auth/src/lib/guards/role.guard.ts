@@ -26,10 +26,7 @@ export class RoleGuard implements CanActivate {
     return this.authService.user?.pipe(
       take(1),
       map((user) => {
-        const userName = user.name;
-        if (userName != null) return true;
-
-        return this.router.createUrlTree(['/auth/login']);
+        return true;
       })
     );
   }

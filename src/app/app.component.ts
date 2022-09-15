@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'auth';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -21,4 +22,12 @@ export class AppComponent {
     { icon: 'fa-users', path: 'employees', text: 'NHÂN VIÊN' },
     { icon: 'fa-clock-rotate-left', path: 'history', text: 'LỊCH SỬ' },
   ];
+
+  user: any = {};
+
+  constructor(private authService: AuthService) {
+    this.authService.user.subscribe((data) => {
+      this.user = data;
+    });
+  }
 }
