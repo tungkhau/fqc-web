@@ -1,0 +1,46 @@
+<div
+  class="d-flex justify-content-center align-items-center w-100 h-100 background"
+>
+  <div class="login-card">
+    <div class="card">
+      <div
+        class="d-flex flex-column justify-content-between h-100 align-items-center"
+      >
+        <div class="w-100">
+          <h3 class="product-heading mb-2">{{ heading }}</h3>
+          <h4 class="product-subheading semi-bold mb-4">{{ subHeading }}</h4>
+          <div class="logo d-flex justify-content-center align-items-center">
+            <img [src]="logoPath" alt="logo" />
+          </div>
+          <div>
+            <label for="employeeId" class="semi-bold"
+              ><i class="fa-solid fa-user me-2"></i>Mã nhân viên</label
+            >
+            <input
+              astInput
+              id="employeeId"
+              type="text"
+              class="d-block w-100 mb-3 mt-2"
+            />
+            <label for="employeeId" class="semi-bold"
+              ><i class="fa-solid fa-key me-2"></i>Mật khẩu</label
+            >
+            <input astInput type="password" class="d-block w-100 mb-3 mt-2" />
+            <button
+              astButtonSolid
+              type="button"
+              class="d-block w-100 login-button"
+              (click)="onLogin()"
+            >
+              Đăng nhập
+            </button>
+          </div>
+        </div>
+        <div>
+          <p class="d-inline me-1 semi-bold">Powered by</p>
+          <a href="#" class="assistant-text d-inline semi-bold">Assistant</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

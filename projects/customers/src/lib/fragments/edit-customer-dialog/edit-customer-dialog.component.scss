@@ -1,0 +1,23 @@
+@import "../../../assets/styles/styles.scss";
+
+.edit-customer-dialog {
+  #customer-code-0,
+  #customer-code-1,
+  #customer-code-2 {
+    text-align: center;
+    width: 40px;
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+.dialog {
+  width: 400px;
+
+  .dialog-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .submit-btn {
+    margin-top: 1.5rem;
+  }
+}

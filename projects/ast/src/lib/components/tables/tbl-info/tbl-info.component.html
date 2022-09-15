@@ -1,0 +1,10 @@
+<table>
+  <tr *ngFor="let att of attributes; let i = index">
+    <th class="head-cell" [ngStyle]="{ width: headerWidth }">
+      <h6 class="semi-bold">{{ headers[i] }}</h6>
+    </th>
+    <td *ngFor="let item of data" [ngStyle]="{ width: dataWidth }">
+      <p>{{ item[att] }}</p>
+    </td>
+  </tr>
+</table>

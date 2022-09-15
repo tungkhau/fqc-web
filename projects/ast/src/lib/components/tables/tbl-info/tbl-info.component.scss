@@ -1,0 +1,62 @@
+@import "../../../../assets/styles/init.scss";
+
+table {
+  width: 100%;
+  border-radius: 6px;
+
+  th {
+    font-size: 12px;
+  }
+
+  td {
+    font-size: 14px;
+  }
+
+  tr {
+    border-bottom: 1px solid $color-l4;
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid $color-l4;
+    }
+  }
+
+  tr:first-child {
+    border-radius: 6px 6px 0 0;
+
+    th:first-child {
+      border-radius: 6px 0 0 0;
+    }
+
+    td:last-child {
+      border-radius: 0 6px 0 0;
+    }
+  }
+
+  tr:last-child {
+    border-bottom: none;
+
+    border-radius: 0 0 6px 6px;
+
+    th,
+    td {
+      border-bottom: none;
+    }
+
+    th:first-child {
+      border-radius: 0 0 0 6px;
+    }
+
+    td:last-child {
+      border-radius: 0 0 6px 0;
+    }
+  }
+
+  th {
+    color: $color-d2;
+    background-color: $color-l5;
+    border-right: 1px solid $color-l4;
+  }
+}

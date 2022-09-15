@@ -1,0 +1,30 @@
+<div class="customer-page h-100">
+  <div class="container-fluid h-100">
+    <div class="h-100 p-2">
+      <div class="col h-100 p-2">
+        <ast-card-empty>
+          <div class="d-flex flex-column h-100">
+            <div class="d-flex justify-content-between">
+              <h3 class="bold mb-4 d-inline-block">KHÁCH HÀNG</h3>
+              <button
+                astButtonIcon
+                size="lg"
+                (click)="onOpenCreateCustomerDialog()"
+              >
+                <i class="fa-solid fa-circle-plus"></i>
+              </button>
+            </div>
+            <div class="flex-fill w-100">
+              <ast-tbl-data
+                [data]="customerData"
+                [buttons]="buttons"
+                [columns]="customerTableColumns"
+              >
+              </ast-tbl-data>
+            </div>
+          </div>
+        </ast-card-empty>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<header class="ast-header">
+  <div class="header-info d-flex align-items-center">
+    <img class="logo" [src]="logoPath" alt="" />
+    <h3
+      class="ms-2 d-inline-block brand-text bold"
+      [style.color]="brandTextColor || '#56717e'"
+    >
+      {{ brandText }}
+    </h3>
+  </div>
+  <nav class="header-navbar">
+    <ul>
+      <li
+        *ngFor="let route of routes"
+        class="d-inline-block"
+        routerLinkActive="active"
+      >
+        <a [routerLink]="[route.path]" class="d-inline-block">
+          <i [class]="'fa-solid d-inline-block ' + route.icon"></i>
+          <h5 class="ms-2 d-inline-block bold">{{ route.text }}</h5>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

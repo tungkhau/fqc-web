@@ -1,0 +1,49 @@
+@import "../assets/styles/styles.scss";
+
+.background {
+  background-color: $color-l3;
+}
+
+.login-card {
+  display: block;
+  width: 480px;
+  height: 600px;
+
+  .card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 32px 40px;
+    height: 100%;
+
+    input {
+      width: 100%;
+    }
+
+    .logo {
+      height: 120px;
+
+      img {
+        height: 100%;
+      }
+      margin-bottom: 32px;
+    }
+
+    h3,
+    h4 {
+      text-align: center;
+    }
+
+    .product-subheading {
+      color: $color-d2;
+    }
+
+    .login-button {
+      margin-top: 28px;
+    }
+
+    .assistant-text {
+      text-decoration: none;
+      color: $color-d1;
+    }
+  }
+}

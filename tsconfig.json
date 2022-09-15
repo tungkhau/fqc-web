@@ -1,7 +1,26 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
+
   "compilerOptions": {
+    "paths": {
+      "ast": [
+        // "dist/ast",
+        "projects/ast/src/public-api"
+      ],
+      "auth": [
+        // "dist/auth",
+        "projects/auth/src/public-api"
+      ],
+      "core": [
+        // "dist/core",
+        "projects/core/src/public-api"
+      ],
+      "customers": [
+        // "dist/customers",
+        "projects/customers/src/public-api"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -18,10 +37,7 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "lib": ["es2020", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
