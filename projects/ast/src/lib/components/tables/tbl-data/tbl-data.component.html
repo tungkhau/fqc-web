@@ -34,7 +34,7 @@
           textAlign: column.headerAlign || 'center'
         }"
       >
-        <div class="">
+        <div>
           <h6 class="semi-bold d-inline">{{ column.header }}</h6>
           <button
             *ngIf="column.isFilterable"
@@ -112,7 +112,17 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let i = index">
         <div class="d-flex justify-content-end">
-          <div
+          <button
+            astButtonIcon
+            [matMenuTriggerFor]="buttonMenu"
+            [matMenuTriggerData]="{ index: i }"
+          >
+            <i class="fa-solid fa-ellipsis"></i>
+          </button>
+          <mat-menu #buttonMenu="matMenu">
+            <ng-template matMenuContent let-id="index">{{ id }}</ng-template>
+          </mat-menu>
+          <!-- <div
             *ngFor="let btn of buttons[i]; let btnIndex = index"
             [class]="btnIndex != 0 ? 'ms-2' : ''"
           >
@@ -123,7 +133,7 @@
             >
               <i [class]="'fa-solid ' + btn.icon"></i>
             </button>
-          </div>
+          </div> -->
         </div>
       </td>
     </ng-container>

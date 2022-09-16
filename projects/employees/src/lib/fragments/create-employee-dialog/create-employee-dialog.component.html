@@ -1,0 +1,53 @@
+<div class="dialog create-employee-dialog position-relative">
+  <h4 class="dialog-title">TẠO KHÁCH HÀNG MỚI</h4>
+  <button
+    astButtonIcon
+    class="position-absolute top-0 right-0"
+    (click)="onCloseDialog()"
+  >
+    <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
+  </button>
+  <form
+    [formGroup]="createEmployeeForm"
+    (ngSubmit)="onCreateEmployee(createEmployeeForm)"
+  >
+    <div class="mb-3">
+      <label for="employee-code" class="d-block semi-bold mb-2 required"
+        >Mã nhân viên</label
+      >
+      <input
+        astInput
+        id="employee-code"
+        type="text"
+        class="form-control w-100"
+        formControlName="code"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="employee-name" class="d-block semi-bold mb-2 required"
+        >Tên nhân viên</label
+      >
+      <input
+        astInput
+        id="employee-name"
+        type="text"
+        class="form-control w-100"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="employee-role" class="d-block semi-bold mb-2">Chức vụ</label>
+      <select formControlName="role" id="employee-role">
+        <option value="1">Quản trị kiểm phẩm</option>
+        <option value="2">Nhân viên kiểm phẩm</option>
+        <option value="3">Nhân viên khác</option>
+      </select>
+    </div>
+
+    <div class="submit-btn">
+      <button astButtonSolid type="submit" class="w-100">Tạo khách hàng</button>
+    </div>
+  </form>
+</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Column, Button } from 'ast';
 import { BehaviorSubject } from 'rxjs';
+import { CreateEmployeeDialogComponent } from './fragments/create-employee-dialog/create-employee-dialog.component';
 
 @Component({
   selector: 'epl-employees',
@@ -51,7 +53,11 @@ export class EmployeesComponent implements OnInit {
 
   buttons: Button[][] = [];
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  onCreateEmployee() {
+    const dialogRef = this.dialog.open(CreateEmployeeDialogComponent);
+  }
 }

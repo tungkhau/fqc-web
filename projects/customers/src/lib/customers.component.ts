@@ -84,10 +84,7 @@ export class CustomersComponent implements OnInit {
   }
 
   onOpenCreateCustomerDialog() {
-    console.log('open');
-
     const dialogRef = this.dialog.open(CreateCustomerDialogComponent);
-    console.log(dialogRef);
   }
 
   onEditCustomer(i: number) {
