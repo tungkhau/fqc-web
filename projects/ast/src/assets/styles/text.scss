@@ -3,55 +3,54 @@ $fw-semi-bold: 600;
 $fw-bold: 700;
 
 .txt {
-  font-family: "Open Sans", sans-serif;
-  margin: 0;
+  font-family: "Open Sans", sans-serif !important;
+  margin: 0 !important;
   padding: 0;
 }
 
 p,
-div,
 label {
   @extend .txt;
 }
 
 h1 {
   @extend .txt;
-  font-size: 3rem;
+  font-size: 3rem !important;
 }
 
 h2 {
   @extend .txt;
-  font-size: 2.25rem;
+  font-size: 2.25rem !important;
 }
 
 h3 {
   @extend .txt;
-  font-size: 1.5rem;
+  font-size: 1.5rem !important;
 }
 
 h4 {
   @extend .txt;
-  font-size: 1.25rem;
+  font-size: 1.25rem !important;
 }
 
 h5 {
   @extend .txt;
-  font-size: 1rem;
+  font-size: 1rem !important;
 }
 
 h6 {
   @extend .txt;
-  font-size: 0.875rem;
+  font-size: 0.875rem !important;
 }
 
 .bold {
-  font-weight: $fw-bold;
+  font-weight: $fw-bold !important;
 }
 
 .semi-bold {
-  font-weight: $fw-semi-bold;
+  font-weight: $fw-semi-bold !important;
 }
 
 .regular {
-  font-weight: $fw-regular;
+  font-weight: $fw-regular !important;
 }

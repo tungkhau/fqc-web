@@ -8,18 +8,11 @@
         // "dist/ast",
         "projects/ast/src/public-api"
       ],
-      "auth": [
-        // "dist/auth",
-        "projects/auth/src/public-api"
-      ],
-      "core": [
-        // "dist/core",
-        "projects/core/src/public-api"
-      ],
-      "customers": [
-        // "dist/customers",
-        "projects/customers/src/public-api"
-      ]
+      "auth": ["projects/auth/src/public-api"],
+      "core": ["projects/core/src/public-api"],
+      "customers": ["projects/customers/src/public-api"],
+      "employees": ["projects/employees/src/public-api"],
+      "products": ["projects/products/src/public-api"]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

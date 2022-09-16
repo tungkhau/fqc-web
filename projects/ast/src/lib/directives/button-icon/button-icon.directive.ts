@@ -24,11 +24,12 @@ export class ButtonIconDirective implements OnInit {
     this.el.nativeElement.style.backgroundColor = this.backgroundColor;
     this.el.nativeElement.style.color = this.color || '#56717e';
 
-    if (this.size == 'lg') {
-      this.el.nativeElement.style.fontSize = '32px';
-    } else {
-      this.el.nativeElement.style.fontSize = '22px';
-    }
+    this.el.nativeElement.style.fontSize = '22px';
+
+    // if (this.size == 'lg') {
+    //   this.el.nativeElement.style.fontSize = '32px';
+    // } else {
+    // }
   }
 
   @HostListener('mouseenter') onMouseEnter() {

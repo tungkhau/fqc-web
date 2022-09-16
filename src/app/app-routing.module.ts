@@ -4,10 +4,10 @@ import { AuthGuard } from 'auth';
 import { CustomerAPIResolver } from './customer-api-resolver';
 
 const routes: Routes = [
-  {
-    path: 'auth',
-    loadChildren: () => import('auth').then((m) => m.AuthModule),
-  },
+  // {
+  //   path: 'auth',
+  //   loadChildren: () => import('auth').then((m) => m.AuthModule),
+  // },
   {
     path: 'customers',
     loadChildren: () => import('customers').then((m) => m.CustomersModule),
@@ -17,9 +17,25 @@ const routes: Routes = [
     data: {
       expectedPermission: 'viewCustomers',
     },
-    canLoad: [AuthGuard],
+    // canLoad: [AuthGuard],
   },
-  { path: '**', redirectTo: 'customers' },
+  {
+    path: 'products',
+    loadChildren: () => import('products').then((m) => m.ProductsModule),
+    resolve: {
+      apiUrl: CustomerAPIResolver,
+    },
+    // canLoad: [AuthGuard],
+  },
+  {
+    path: 'employees',
+    loadChildren: () => import('employees').then((m) => m.EmployeesModule),
+    resolve: {
+      apiUrl: CustomerAPIResolver,
+    },
+    // canLoad: [AuthGuard],
+  },
+  { path: '**', redirectTo: 'employees' },
 ];
 
 @NgModule({

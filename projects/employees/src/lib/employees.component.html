@@ -5,20 +5,16 @@
         <ast-card-empty>
           <div class="d-flex flex-column h-100">
             <div class="d-flex justify-content-between mb-4">
-              <h3 class="bold d-inline-block">KHÁCH HÀNG</h3>
-              <button
-                astButtonIcon
-                size="lg"
-                (click)="onOpenCreateCustomerDialog()"
-              >
+              <h3 class="bold d-inline-block">NHÂN VIÊN</h3>
+              <button astButtonIcon size="lg">
                 <i class="fa-solid fa-circle-plus"></i>
               </button>
             </div>
             <div class="flex-fill w-100">
               <ast-tbl-data
-                [data]="customerData"
+                [data]="employeeData"
                 [buttons]="buttons"
-                [columns]="customerTableColumns"
+                [columns]="employeeTableColumns"
               >
               </ast-tbl-data>
             </div>

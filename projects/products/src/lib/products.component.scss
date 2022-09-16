@@ -1,0 +1,9 @@
+@import "../assets/styles/styles.scss";
+
+.products-page {
+  .container {
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+  }
+}

@@ -10,7 +10,12 @@ export class AuthService {
     name: string;
     role: string;
     permissions: any;
-  } | null>(null);
+  } | null>({
+    id: 'BE2001',
+    name: 'Nguyễn Văn Tèo',
+    role: 'employee',
+    permissions: { viewProducts: true, viewCustomers: true },
+  });
 
   constructor() {}
 
