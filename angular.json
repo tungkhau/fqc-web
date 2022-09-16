@@ -257,23 +257,23 @@
         }
       }
     },
-    "employees": {
+    "staffs": {
       "projectType": "library",
-      "root": "projects/employees",
-      "sourceRoot": "projects/employees/src",
+      "root": "projects/staffs",
+      "sourceRoot": "projects/staffs/src",
       "prefix": "epl",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/employees/ng-package.json"
+            "project": "projects/staffs/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/employees/tsconfig.lib.prod.json"
+              "tsConfig": "projects/staffs/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/employees/tsconfig.lib.json"
+              "tsConfig": "projects/staffs/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -281,9 +281,9 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/employees/src/test.ts",
-            "tsConfig": "projects/employees/tsconfig.spec.json",
-            "karmaConfig": "projects/employees/karma.conf.js"
+            "main": "projects/staffs/src/test.ts",
+            "tsConfig": "projects/staffs/tsconfig.spec.json",
+            "karmaConfig": "projects/staffs/karma.conf.js"
           }
         }
       }

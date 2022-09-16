@@ -28,14 +28,14 @@ const routes: Routes = [
     // canLoad: [AuthGuard],
   },
   {
-    path: 'employees',
-    loadChildren: () => import('employees').then((m) => m.EmployeesModule),
+    path: 'staffs',
+    loadChildren: () => import('staffs').then((m) => m.StaffsModule),
     resolve: {
       apiUrl: CustomerAPIResolver,
     },
     // canLoad: [AuthGuard],
   },
-  { path: '**', redirectTo: 'employees' },
+  { path: '**', redirectTo: 'staffs' },
 ];
 
 @NgModule({

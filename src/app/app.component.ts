@@ -19,7 +19,7 @@ export class AppComponent {
     { icon: 'fa-user-tie', path: 'customers', text: 'KHÁCH HÀNG' },
     { icon: 'fa-star', path: 'standards', text: 'TIÊU CHUẨN' },
     { icon: 'fa-scroll', path: 'lots', text: 'LOT' },
-    { icon: 'fa-users', path: 'employees', text: 'NHÂN VIÊN' },
+    { icon: 'fa-users', path: 'staffs', text: 'NHÂN VIÊN' },
     { icon: 'fa-clock-rotate-left', path: 'history', text: 'LỊCH SỬ' },
   ];
 

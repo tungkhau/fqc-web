@@ -13,7 +13,7 @@ export class AuthService {
   } | null>({
     id: 'BE2001',
     name: 'Nguyễn Văn Tèo',
-    role: 'employee',
+    role: 'staff',
     permissions: { viewProducts: true, viewCustomers: true },
   });
 
@@ -27,7 +27,7 @@ export class AuthService {
     this.user.next({
       id: 'BE2001',
       name: 'Nguyễn Văn Tèo',
-      role: 'employee',
+      role: 'staff',
       permissions: { viewProducts: true, viewCustomers: true },
     });
   }

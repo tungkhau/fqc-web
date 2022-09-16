@@ -1,0 +1,29 @@
+<div class="customer-page h-100">
+  <div class="container-fluid h-100">
+    <div class="h-100 p-2">
+      <div class="col h-100 p-2">
+        <ast-card-empty>
+          <div class="d-flex flex-column h-100">
+            <div class="d-flex justify-content-between mb-4">
+              <h3 class="bold d-inline-block">NHÂN VIÊN</h3>
+              <button astButtonIcon size="lg">
+                <i
+                  class="fa-solid fa-circle-plus"
+                  (click)="onCreateStaff()"
+                ></i>
+              </button>
+            </div>
+            <div class="flex-fill w-100">
+              <ast-tbl-data
+                [data]="staffData"
+                [buttons]="buttons"
+                [columns]="staffTableColumns"
+              >
+              </ast-tbl-data>
+            </div>
+          </div>
+        </ast-card-empty>
+      </div>
+    </div>
+  </div>
+</div>

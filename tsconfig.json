@@ -11,7 +11,7 @@
       "auth": ["projects/auth/src/public-api"],
       "core": ["projects/core/src/public-api"],
       "customers": ["projects/customers/src/public-api"],
-      "employees": ["projects/employees/src/public-api"],
+      "staffs": ["projects/staffs/src/public-api"],
       "products": ["projects/products/src/public-api"]
     },
     "baseUrl": "./",
