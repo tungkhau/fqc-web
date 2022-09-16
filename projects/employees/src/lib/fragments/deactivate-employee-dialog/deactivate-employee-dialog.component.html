@@ -1,0 +1,40 @@
+<div class="dialog create-employee-dialog position-relative">
+  <h4 class="dialog-title semi-bold">VÔ HIỆU HÓA NHÂN VIÊN</h4>
+  <button
+    astButtonIcon
+    class="position-absolute top-0 right-0"
+    (click)="onCloseDialog()"
+  >
+    <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
+  </button>
+  <ast-tbl-info
+    [data]="data"
+    [headers]="headers"
+    [attributes]="attributes"
+    dataWidth="60%"
+  ></ast-tbl-info>
+  <form>
+    <p class="text-center">
+      Xác nhận vô hiệu hóa nhân viên <b>Nguyễn Văn Tèo</b>?
+    </p>
+    <div class="buttons d-flex justify-content-center">
+      <button
+        astButtonSolid
+        type="submit"
+        class="submit-btn"
+        backgroundColor="#DF5B5B"
+      >
+        Xác nhận
+      </button>
+      <button
+        astButtonOutline
+        type="button"
+        class=""
+        color="#DF5B5B"
+        (click)="onCloseDialog()"
+      >
+        Hủy
+      </button>
+    </div>
+  </form>
+</div>

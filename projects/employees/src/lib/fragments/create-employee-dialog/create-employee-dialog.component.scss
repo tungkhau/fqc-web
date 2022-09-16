@@ -13,6 +13,10 @@
 .dialog {
   width: 400px;
 
+  b {
+    color: $color-theme;
+  }
+
   .dialog-title {
     margin-bottom: 1.25rem;
   }
