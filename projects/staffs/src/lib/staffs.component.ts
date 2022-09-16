@@ -97,7 +97,7 @@ export class StaffsComponent implements OnInit {
               icon: 'fa-power-off',
               iconColor: null,
               action: () => {
-                this.onDeactivateStaff(i);
+                this.toggleStaffActivation(i);
                 console.log('deactivate');
               },
             },
@@ -117,5 +117,18 @@ export class StaffsComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateStaffDialogComponent);
   }
 
-  onDeactivateStaff(i: number) {}
+  toggleStaffActivation(i: number) {
+    console.log(this.staffData.getValue()[i].active);
+
+    let newStaffDto = {
+      ...this.staffData.getValue()[i],
+      active: !this.staffData.getValue()[i].active,
+    };
+
+    this.staffConnectorService
+      .update(this.staffData.getValue()[i].id, newStaffDto)
+      .subscribe((data) => {
+        this.staffsService.reload();
+      });
+  }
 }

@@ -35,5 +35,21 @@ export class StaffsService {
     return new Staff(e.id, e.code, e.name, e.role, roleName, e.active, status);
   }
 
+  parseModelToDto(e: Staff) {
+    let roleName = 'Nhân viên khác';
+
+    if (e.role === 'ADMIN') {
+      roleName = 'Quản trị hệ thống';
+    } else if (e.role === 'SPECIALIST') {
+      roleName = 'Quản trị kiểm phẩm';
+    } else if (e.role === 'STAFF') {
+      roleName = 'Nhân viên kiểm phẩm';
+    }
+
+    let status = e.active ? 'Đang hoạt động' : 'Đã vô hiệu hóa';
+
+    return new Staff(e.id, e.code, e.name, e.role, roleName, e.active, status);
+  }
+
   constructor() {}
 }

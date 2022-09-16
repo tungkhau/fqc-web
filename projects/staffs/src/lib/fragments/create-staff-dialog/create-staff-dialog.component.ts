@@ -15,6 +15,7 @@ export class CreateStaffDialogComponent implements OnInit {
     code: '',
     name: '',
     role: 'STAFF',
+    active: 'true',
   });
 
   constructor(
@@ -36,7 +37,6 @@ export class CreateStaffDialogComponent implements OnInit {
     };
 
     this.staffsConnectorService.create(submitStaff).subscribe((data: any) => {
-      console.log(data);
       this.staffsService.reload();
     });
   }
