@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Staff } from './data/models/staff.model';
 import { StaffsConnectorService } from './data/services/staff-connector.service';
 import { CreateStaffDialogComponent } from './fragments/create-staff-dialog/create-staff-dialog.component';
+import { EditStaffDialogComponent } from './fragments/edit-staff-dialog/edit-staff-dialog.component';
 import { StaffsService } from './staffs.service';
 
 @Component({
@@ -79,7 +80,7 @@ export class StaffsComponent implements OnInit {
               icon: 'fa-pen-to-square',
               iconColor: null,
               action: () => {
-                console.log('edit');
+                this.onEditStaff(i);
               },
             },
             {
@@ -114,6 +115,12 @@ export class StaffsComponent implements OnInit {
 
   onCreateStaff() {
     const dialogRef = this.dialog.open(CreateStaffDialogComponent);
+  }
+
+  onEditStaff(i: number) {
+    const dialogRef = this.dialog.open(EditStaffDialogComponent, {
+      data: { staff: this.staffData.getValue()[i] },
+    });
   }
 
   toggleStaffActivation(i: number) {

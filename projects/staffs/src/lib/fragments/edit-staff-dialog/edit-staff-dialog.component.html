@@ -1,5 +1,5 @@
 <div class="dialog create-staff-dialog position-relative">
-  <h4 class="dialog-title semi-bold">TẠO KHÁCH HÀNG MỚI</h4>
+  <h4 class="dialog-title semi-bold">CHỈNH SỬA KHÁCH HÀNG MỚI</h4>
   <button
     astButtonIcon
     class="position-absolute top-0 right-0"
@@ -7,16 +7,14 @@
   >
     <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
   </button>
-  <form
-    [formGroup]="createStaffForm"
-    (ngSubmit)="onCreateStaff(createStaffForm)"
-  >
+  <form [formGroup]="editStaffForm" (ngSubmit)="onUpdateStaff(editStaffForm)">
     <div class="mb-3">
       <label for="staff-code" class="d-block semi-bold mb-2 required"
         >Mã nhân viên</label
       >
       <input
         astInput
+        readonly
         id="staff-code"
         type="text"
         class="form-control w-100"
@@ -47,7 +45,7 @@
     </div>
 
     <div class="submit-btn">
-      <button astButtonSolid type="submit" class="w-100">Tạo khách hàng</button>
+      <button astButtonSolid type="submit" class="w-100">Cập nhật</button>
     </div>
   </form>
 </div>

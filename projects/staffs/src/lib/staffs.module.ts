@@ -7,6 +7,7 @@ import { StaffsComponent } from './staffs.component';
 import { ResetStaffPasswordDialogComponent } from './fragments/reset-staff-password-dialog/reset-staff-password-dialog.component';
 import { CreateStaffDialogComponent } from './fragments/create-staff-dialog/create-staff-dialog.component';
 import { DeactivateStaffDialogComponent } from './fragments/deactivate-staff-dialog/deactivate-staff-dialog.component';
+import { EditStaffDialogComponent } from './fragments/edit-staff-dialog/edit-staff-dialog.component';
 
 const routes = [
   {
@@ -19,6 +20,7 @@ const routes = [
   declarations: [
     StaffsComponent,
     CreateStaffDialogComponent,
+    EditStaffDialogComponent,
     ResetStaffPasswordDialogComponent,
     DeactivateStaffDialogComponent,
   ],
