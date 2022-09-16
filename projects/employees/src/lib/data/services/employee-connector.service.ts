@@ -5,7 +5,7 @@ import { EmployeeDto } from '../dtos/employee-dto';
 
 @Injectable()
 export class EmployeesConnectorService {
-  private serviceName = 'employee';
+  private serviceName = '';
 
   constructor(private backendService: BackendService) {}
 
@@ -14,22 +14,22 @@ export class EmployeesConnectorService {
   }
 
   fetch(): Observable<EmployeeDto[]> {
-    const url = this.serviceName + '/employees';
+    const url = 'staffs';
     return this.backendService.connect(url, Method.GET);
   }
 
   create(employeeDto: EmployeeDto): Observable<any> {
-    const url = this.serviceName + '/employees';
+    const url = 'staffs';
     return this.backendService.connect(url, Method.POST, employeeDto);
   }
 
   update(employeeId: string): Observable<any> {
-    const url = this.serviceName + '/employees/' + employeeId;
+    const url = 'staffs/' + employeeId;
     return this.backendService.connect(url, Method.PUT);
   }
 
   delete(employeeId: string): Observable<any> {
-    const url = this.serviceName + '/employees/' + employeeId;
+    const url = 'staffs/' + employeeId;
     return this.backendService.connect(url, Method.DELETE);
   }
 }

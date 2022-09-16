@@ -1,6 +1,7 @@
 export interface EmployeeDto {
   id: string;
+  code: string;
   name: string;
   role: string;
-  status: string;
+  active: boolean;
 }

@@ -115,12 +115,22 @@
           <button
             astButtonIcon
             [matMenuTriggerFor]="buttonMenu"
-            [matMenuTriggerData]="{ index: i }"
+            [matMenuTriggerData]="{ buttons: buttons[i] }"
           >
             <i class="fa-solid fa-ellipsis"></i>
           </button>
           <mat-menu #buttonMenu="matMenu">
-            <ng-template matMenuContent let-id="index">{{ id }}</ng-template>
+            <ng-template matMenuContent let-buttonList="buttons">
+              <div
+                *ngFor="let btn of buttonList; let btnIndex = index"
+                [class]="btnIndex != 0 ? '' : ''"
+              >
+                <button mat-menu-item type="button" (click)="btn.action()">
+                  <i [class]="'fa-solid ' + btn.icon"></i>
+                  <span class="ms-2">{{ btn.text }}</span>
+                </button>
+              </div>
+            </ng-template>
           </mat-menu>
           <!-- <div
             *ngFor="let btn of buttons[i]; let btnIndex = index"

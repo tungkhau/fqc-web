@@ -14,9 +14,7 @@ export class CreateEmployeeDialogComponent implements OnInit {
   createEmployeeForm = this.fb.group({
     code: '',
     name: '',
-    address: '',
-    taxCode: '',
-    phone: '',
+    role: 'STAFF',
   });
 
   constructor(
@@ -41,9 +39,7 @@ export class CreateEmployeeDialogComponent implements OnInit {
       .create(submitEmployee)
       .subscribe((data: any) => {
         console.log(data);
-
-        // this.employeesService.addEmployee(value);
-        // this.employeesService.reload();
+        this.employeesService.reload();
       });
   }
 }
