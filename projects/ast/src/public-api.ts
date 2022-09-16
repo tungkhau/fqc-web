@@ -22,3 +22,4 @@ export * from './lib/components/cards/card-empty/card-empty.component';
 export * from './lib/directives/input/input.directive';
 export * from './lib/directives/button-solid/button-solid.directive';
 export * from './lib/directives/button-icon/button-icon.directive';
+export * from './lib/directives/button-outline/button-outline.directive';

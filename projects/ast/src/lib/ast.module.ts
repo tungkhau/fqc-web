@@ -9,6 +9,7 @@ import { CardEmptyComponent } from './components/cards/card-empty/card-empty.com
 import { InputDirective } from './directives/input/input.directive';
 import { ButtonSolidDirective } from './directives/button-solid/button-solid.directive';
 import { ButtonIconDirective } from './directives/button-icon/button-icon.directive';
+import { ButtonOutlineDirective } from './directives/button-outline/button-outline.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ButtonIconDirective } from './directives/button-icon/button-icon.direct
     InputDirective,
     ButtonSolidDirective,
     ButtonIconDirective,
+    ButtonOutlineDirective,
   ],
   imports: [SharedModule, MaterialModule],
   exports: [
@@ -38,6 +40,7 @@ import { ButtonIconDirective } from './directives/button-icon/button-icon.direct
     InputDirective,
     ButtonSolidDirective,
     ButtonIconDirective,
+    ButtonOutlineDirective,
   ],
 })
 export class AstModule {}

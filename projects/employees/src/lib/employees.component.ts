@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Column, Button } from 'ast';
 import { BehaviorSubject } from 'rxjs';
 import { CreateEmployeeDialogComponent } from './fragments/create-employee-dialog/create-employee-dialog.component';
+import { ResetEmployeePasswordDialogComponent } from './fragments/reset-employee-password-dialog/reset-employee-password-dialog.component';
 
 @Component({
   selector: 'epl-employees',
@@ -58,6 +59,6 @@ export class EmployeesComponent implements OnInit {
   ngOnInit(): void {}
 
   onCreateEmployee() {
-    const dialogRef = this.dialog.open(CreateEmployeeDialogComponent);
+    const dialogRef = this.dialog.open(ResetEmployeePasswordDialogComponent);
   }
 }
