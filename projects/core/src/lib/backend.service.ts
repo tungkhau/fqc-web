@@ -22,6 +22,10 @@ export class BackendService {
         return this.http.put(endUrl, JSON.stringify(params), {
           headers: headers,
         });
+      case Method.PATCH:
+        return this.http.patch(endUrl, JSON.stringify(params), {
+          headers: headers,
+        });
       case Method.DELETE:
         return this.http.delete(endUrl);
       default:
@@ -34,5 +38,6 @@ export enum Method {
   GET,
   POST,
   PUT,
+  PATCH,
   DELETE,
 }

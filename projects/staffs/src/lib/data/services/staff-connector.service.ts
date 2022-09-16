@@ -28,6 +28,11 @@ export class StaffsConnectorService {
     return this.backendService.connect(url, Method.PUT, staffDto);
   }
 
+  patch(staffId: string): Observable<any> {
+    const url = 'staffs/' + staffId;
+    return this.backendService.connect(url, Method.PATCH, {});
+  }
+
   delete(staffId: string): Observable<any> {
     const url = 'staffs/' + staffId;
     return this.backendService.connect(url, Method.DELETE);

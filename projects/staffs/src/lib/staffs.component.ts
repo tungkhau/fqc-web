@@ -88,7 +88,7 @@ export class StaffsComponent implements OnInit {
               icon: 'fa-lock',
               iconColor: null,
               action: () => {
-                console.log('reset');
+                this.onResetPassword(i);
               },
             },
             {
@@ -98,7 +98,6 @@ export class StaffsComponent implements OnInit {
               iconColor: null,
               action: () => {
                 this.toggleStaffActivation(i);
-                console.log('deactivate');
               },
             },
           ]);
@@ -118,8 +117,6 @@ export class StaffsComponent implements OnInit {
   }
 
   toggleStaffActivation(i: number) {
-    console.log(this.staffData.getValue()[i].active);
-
     let newStaffDto = {
       ...this.staffData.getValue()[i],
       active: !this.staffData.getValue()[i].active,
@@ -127,6 +124,14 @@ export class StaffsComponent implements OnInit {
 
     this.staffConnectorService
       .update(this.staffData.getValue()[i].id, newStaffDto)
+      .subscribe((data) => {
+        this.staffsService.reload();
+      });
+  }
+
+  onResetPassword(i: number) {
+    this.staffConnectorService
+      .patch(this.staffData.getValue()[i].id)
       .subscribe((data) => {
         this.staffsService.reload();
       });
