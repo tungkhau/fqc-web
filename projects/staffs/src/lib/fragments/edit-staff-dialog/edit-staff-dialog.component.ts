@@ -44,6 +44,7 @@ export class EditStaffDialogComponent implements OnInit {
       .update(this.data.staff.id, submitStaff)
       .subscribe((data: any) => {
         this.staffsService.reload();
+        this.onCloseDialog();
       });
   }
 }

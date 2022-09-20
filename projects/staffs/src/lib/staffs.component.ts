@@ -7,6 +7,7 @@ import { Staff } from './data/models/staff.model';
 import { StaffsConnectorService } from './data/services/staff-connector.service';
 import { CreateStaffDialogComponent } from './fragments/create-staff-dialog/create-staff-dialog.component';
 import { EditStaffDialogComponent } from './fragments/edit-staff-dialog/edit-staff-dialog.component';
+import { ResetStaffPasswordDialogComponent } from './fragments/reset-staff-password-dialog/reset-staff-password-dialog.component';
 import { StaffsService } from './staffs.service';
 
 @Component({
@@ -137,10 +138,8 @@ export class StaffsComponent implements OnInit {
   }
 
   onResetPassword(i: number) {
-    this.staffConnectorService
-      .patch(this.staffData.getValue()[i].id)
-      .subscribe((data) => {
-        this.staffsService.reload();
-      });
+    const dialogRef = this.dialog.open(ResetStaffPasswordDialogComponent, {
+      data: { staff: this.staffData.getValue()[i] },
+    });
   }
 }

@@ -10,6 +10,8 @@ export class StaffsService {
   reloadStaffPage: Subject<boolean> = new Subject<boolean>();
 
   reload() {
+    console.log('reload');
+
     this.reloadStaffPage.next(true);
   }
 
