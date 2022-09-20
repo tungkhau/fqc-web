@@ -287,6 +287,68 @@
           }
         }
       }
+    },
+    "criterias": {
+      "projectType": "library",
+      "root": "projects/criterias",
+      "sourceRoot": "projects/criterias/src",
+      "prefix": "cri",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/criterias/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/criterias/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/criterias/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/criterias/src/test.ts",
+            "tsConfig": "projects/criterias/tsconfig.spec.json",
+            "karmaConfig": "projects/criterias/karma.conf.js"
+          }
+        }
+      }
+    },
+    "criteria": {
+      "projectType": "library",
+      "root": "projects/criteria",
+      "sourceRoot": "projects/criteria/src",
+      "prefix": "cri",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/criteria/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/criteria/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/criteria/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/criteria/src/test.ts",
+            "tsConfig": "projects/criteria/tsconfig.spec.json",
+            "karmaConfig": "projects/criteria/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "fqc-web"

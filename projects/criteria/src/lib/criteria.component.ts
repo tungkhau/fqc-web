@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Button, Column } from 'ast';
+import { MatDialog } from '@angular/material/dialog';
+import { Column, Button } from 'ast';
 import { BehaviorSubject } from 'rxjs';
+import { CreateCriteriaDialogComponent } from './fragments/create-criteria-dialog/create-criteria-dialog.component';
 
 @Component({
-  selector: 'prd-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
+  selector: 'cri-criteria',
+  templateUrl: './criteria.component.html',
+  styleUrls: ['./criteria.component.scss'],
 })
-export class ProductsComponent implements OnInit {
-  productsData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+export class CriteriaComponent implements OnInit {
+  productData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
-  productsTableColumns: Column[] = [
+  productTableColumns: Column[] = [
     {
       name: 'id',
       header: 'ID',
@@ -51,7 +53,11 @@ export class ProductsComponent implements OnInit {
 
   buttons: Button[][] = [];
 
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  onCreateCriteria(): void {
+    const dialog = this.dialog.open(CreateCriteriaDialogComponent);
+  }
 }

@@ -1,0 +1,11 @@
+.criteria-page {
+  padding: 0.5rem;
+  .container {
+    display: grid;
+    grid-template-columns: 9fr 3fr;
+
+    .product-card {
+      grid-row: span 2;
+    }
+  }
+}

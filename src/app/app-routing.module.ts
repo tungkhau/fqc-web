@@ -28,6 +28,14 @@ const routes: Routes = [
     // canLoad: [AuthGuard],
   },
   {
+    path: 'criteria',
+    loadChildren: () => import('criteria').then((m) => m.CriteriaModule),
+    resolve: {
+      apiUrl: CustomerAPIResolver,
+    },
+    // canLoad: [AuthGuard],
+  },
+  {
     path: 'staffs',
     loadChildren: () => import('staffs').then((m) => m.StaffsModule),
     resolve: {
@@ -35,7 +43,7 @@ const routes: Routes = [
     },
     // canLoad: [AuthGuard],
   },
-  { path: '**', redirectTo: 'staffs' },
+  { path: '**', redirectTo: 'criteria' },
 ];
 
 @NgModule({

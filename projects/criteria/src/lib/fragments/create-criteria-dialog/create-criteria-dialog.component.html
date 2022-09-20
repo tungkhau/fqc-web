@@ -1,0 +1,43 @@
+<div class="dialog create-customer-dialog position-relative">
+  <h4 class="dialog-title">TẠO KHÁCH HÀNG MỚI</h4>
+  <button
+    astButtonIcon
+    class="position-absolute top-0 right-0"
+    (click)="onCloseDialog()"
+  >
+    <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
+  </button>
+  <form
+    [formGroup]="createCriteriaForm"
+    (ngSubmit)="onCreateCriteria(createCriteriaForm)"
+  >
+    <div class="mb-3">
+      <label for="customer-name" class="d-block semi-bold mb-2 required"
+        >Tên tiêu chuẩn</label
+      >
+      <input
+        astInput
+        id="customer-name"
+        type="text"
+        class="form-control w-100"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="customer-phone" class="d-block semi-bold mb-2"
+        >Phân loại đánh giá</label
+      >
+      <div formArrayName="checkpoints">
+        <input *ngFor="let checkpoint of
+        createCriteriaForm.get("checkpoints").controls; let i = index" astInput
+        id="customer-phone" type="text" class="form-control w-100"
+        [formControlName]="i" />
+      </div>
+    </div>
+
+    <div class="submit-btn">
+      <button astButtonSolid type="submit" class="w-100">Tạo khách hàng</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+<div class="criteria-page h-100">
+  <div class="container h-100">
+    <div class="product-card col col-8 h-100 p-2">
+      <ast-card-empty>
+        <div class="d-flex flex-column h-100">
+          <div class="d-flex justify-content-between mb-4">
+            <h3 class="bold d-inline-block">MẶT HÀNG</h3>
+            <button astButtonIcon size="lg">
+              <i class="fa-solid fa-circle-plus"></i>
+            </button>
+          </div>
+          <div class="flex-fill w-100">
+            <ast-tbl-data
+              [data]="productData"
+              [buttons]="buttons"
+              [columns]="productTableColumns"
+            >
+            </ast-tbl-data>
+          </div>
+        </div>
+      </ast-card-empty>
+    </div>
+    <div class="col col-4 h-100 p-2">
+      <ast-card-empty>
+        <div class="d-flex flex-column h-100">
+          <div class="d-flex justify-content-between mb-4">
+            <h3 class="bold d-inline-block">TIÊU CHUẨN</h3>
+            <button astButtonIcon size="lg" (click)="onCreateCriteria()">
+              <i class="fa-solid fa-circle-plus"></i>
+            </button>
+          </div>
+          <div class="flex-fill w-100"></div>
+        </div>
+      </ast-card-empty>
+    </div>
+    <div class="col col-4 h-100 p-2">
+      <ast-card-empty>
+        <div class="d-flex flex-column h-100">
+          <div class="d-flex justify-content-between mb-4">
+            <h3 class="bold d-inline-block">MẪU TEM</h3>
+            <button astButtonIcon size="lg">
+              <i class="fa-solid fa-circle-plus"></i>
+            </button>
+          </div>
+          <div class="flex-fill w-100"></div>
+        </div>
+      </ast-card-empty>
+    </div>
+  </div>
+</div>

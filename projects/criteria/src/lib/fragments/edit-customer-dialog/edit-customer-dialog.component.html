@@ -1,0 +1,103 @@
+<div class="dialog edit-customer-dialog position-relative">
+  <h4 class="dialog-title">CHỈNH SỬA KHÁCH HÀNG</h4>
+  <button
+    astButtonIcon
+    class="position-absolute top-0 right-0"
+    (click)="onCloseDialog()"
+  >
+    <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
+  </button>
+  <form
+    [formGroup]="editCustomerForm"
+    (ngSubmit)="onUpdateCustomer(editCustomerForm)"
+  >
+    <div class="mb-3">
+      <label for="customer-code-0" class="d-block semi-bold mb-2 required"
+        >Mã khách hàng</label
+      >
+      <div class="form-group" formGroupName="code">
+        <input
+          astInput
+          id="customer-code-0"
+          type="text"
+          class="form-control me-2"
+          maxlength="1"
+          formControlName="char0"
+          readonly
+        />
+        <input
+          astInput
+          id="customer-code-1"
+          type="text"
+          class="form-control me-2"
+          maxlength="1"
+          formControlName="char1"
+          readonly
+        />
+        <input
+          astInput
+          id="customer-code-2"
+          type="text"
+          class="form-control"
+          maxlength="1"
+          formControlName="char2"
+          readonly
+        />
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="customer-name" class="d-block semi-bold mb-2 required"
+        >Tên khách hàng</label
+      >
+      <input
+        astInput
+        id="customer-name"
+        type="text"
+        class="form-control w-100"
+        formControlName="name"
+        readonly
+      />
+    </div>
+    <div class="mb-3">
+      <label for="customer-address" class="d-block semi-bold mb-2"
+        >Địa chỉ</label
+      >
+      <input
+        astInput
+        id="customer-address"
+        type="text"
+        class="form-control w-100"
+        formControlName="address"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="customer-tax-code" class="d-block semi-bold mb-2"
+        >Mã số thuế</label
+      >
+      <input
+        astInput
+        id="customer-tax-code"
+        type="text"
+        class="form-control w-100"
+        formControlName="taxCode"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="customer-phone" class="d-block semi-bold mb-2"
+        >Số điện thoại</label
+      >
+      <input
+        astInput
+        id="customer-phone"
+        type="text"
+        class="form-control w-100"
+        formControlName="phoneNumber"
+      />
+    </div>
+
+    <div class="submit-btn">
+      <button astButtonSolid type="submit" class="w-100">Cập nhật</button>
+    </div>
+  </form>
+</div>
