@@ -7,16 +7,6 @@ import { CustomerDto } from './data/dtos/customer-dto';
   providedIn: 'root',
 })
 export class CustomersService {
-  customers: BehaviorSubject<CustomerDto[]> = new BehaviorSubject<
-    CustomerDto[]
-  >([]);
-
-  editingCustomer: any;
-
-  // addCustomer(newCustomer: CustomerDto) {
-  //   this.customers.next([...this.customers.getValue(), newCustomer]);
-  // }
-
   reloadSubject: Subject<boolean> = new Subject<boolean>();
 
   reload() {

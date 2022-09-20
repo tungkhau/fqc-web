@@ -1,10 +1,11 @@
 export class Customer {
   constructor(
-    id: string,
-    code: string,
-    name: string,
-    address: string,
-    taxCode: string,
-    phoneNumber: string
+    public id: string,
+    public code: string,
+    public name: string,
+    public fullName: string,
+    public address: string,
+    public taxCode: string,
+    public phoneNumber: string
   ) {}
 }

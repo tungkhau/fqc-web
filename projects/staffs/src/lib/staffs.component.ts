@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Staff } from './data/models/staff.model';
 import { StaffsConnectorService } from './data/services/staff-connector.service';
 import { CreateStaffDialogComponent } from './fragments/create-staff-dialog/create-staff-dialog.component';
+import { DeactivateStaffDialogComponent } from './fragments/deactivate-staff-dialog/deactivate-staff-dialog.component';
 import { EditStaffDialogComponent } from './fragments/edit-staff-dialog/edit-staff-dialog.component';
 import { ResetStaffPasswordDialogComponent } from './fragments/reset-staff-password-dialog/reset-staff-password-dialog.component';
 import { StaffsService } from './staffs.service';
@@ -99,7 +100,7 @@ export class StaffsComponent implements OnInit {
               icon: 'fa-power-off',
               iconColor: null,
               action: () => {
-                this.toggleStaffActivation(i);
+                this.onToggleStaffActivation(i);
               },
             },
           ]);
@@ -124,17 +125,10 @@ export class StaffsComponent implements OnInit {
     });
   }
 
-  toggleStaffActivation(i: number) {
-    let newStaffDto = {
-      ...this.staffData.getValue()[i],
-      active: !this.staffData.getValue()[i].active,
-    };
-
-    this.staffConnectorService
-      .update(this.staffData.getValue()[i].id, newStaffDto)
-      .subscribe((data) => {
-        this.staffsService.reload();
-      });
+  onToggleStaffActivation(i: number) {
+    const dialogRef = this.dialog.open(DeactivateStaffDialogComponent, {
+      data: { staff: this.staffData.getValue()[i] },
+    });
   }
 
   onResetPassword(i: number) {

@@ -7,6 +7,7 @@ import { CustomersService } from './customers.service';
 import { CustomersConnectorService } from './data/services/customer-connector.service';
 import { EditCustomerDialogComponent } from './fragments/edit-customer-dialog/edit-customer-dialog.component';
 import { CreateCustomerDialogComponent } from './fragments/create-customer-dialog/create-customer-dialog.component';
+import { DeleteCustomerDialogComponent } from './fragments/delete-customer-dialog/delete-customer-dialog.component';
 
 @Component({
   selector: 'ctm-customers',
@@ -36,9 +37,18 @@ export class CustomersComponent implements OnInit {
       isSortable: false,
     },
     {
+      name: 'fullName',
+      header: 'TÊN ĐẦY ĐỦ',
+      width: '20%',
+      headerAlign: 'left',
+      dataAlign: 'left',
+      isFilterable: true,
+      isSortable: false,
+    },
+    {
       name: 'address',
       header: 'ĐỊA CHỈ',
-      width: '30%',
+      width: '20%',
       headerAlign: 'left',
       dataAlign: 'left',
       isFilterable: true,
@@ -83,17 +93,30 @@ export class CustomersComponent implements OnInit {
     });
   }
 
+  fakeCustomer = {
+    id: '123',
+    code: '123',
+    name: '123',
+    fullName: '123',
+    address: '123',
+    taxCode: '123',
+    phoneNumber: '123',
+  };
   onOpenCreateCustomerDialog() {
-    const dialogRef = this.dialog.open(CreateCustomerDialogComponent);
+    const dialogRef = this.dialog.open(DeleteCustomerDialogComponent, {
+      data: { customer: this.fakeCustomer },
+    });
   }
 
   onEditCustomer(i: number) {
-    this.customersService.editingCustomer = {
-      ...this.customerData.getValue()[i],
-    };
-
-    const dialogRef = this.dialog.open(EditCustomerDialogComponent);
+    const dialogRef = this.dialog.open(EditCustomerDialogComponent, {
+      data: { customer: this.fakeCustomer },
+    });
   }
 
-  onDeleteCustomer(i: number) {}
+  onDeleteCustomer(i: number) {
+    const dialogRef = this.dialog.open(DeleteCustomerDialogComponent, {
+      data: { customer: this.fakeCustomer },
+    });
+  }
 }

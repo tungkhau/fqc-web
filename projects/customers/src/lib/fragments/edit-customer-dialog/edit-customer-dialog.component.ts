@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CustomerDto } from 'projects/customers/src/lib/data/dtos/customer-dto';
 import { CustomersService } from 'customers';
+import { CustomersConnectorService } from '../../data/services/customer-connector.service';
+import { Customer } from '../../data/models/customer.model';
 
 @Component({
   selector: 'app-edit-customer-dialog',
@@ -10,22 +12,25 @@ import { CustomersService } from 'customers';
   styleUrls: ['./edit-customer-dialog.component.scss'],
 })
 export class EditCustomerDialogComponent implements OnInit {
-  createCustomerForm = this.fb.group({
+  editCustomerForm = this.fb.group({
     code: this.fb.group({
-      char0: this.customersService.editingCustomer.code.substr(0, 1),
-      char1: this.customersService.editingCustomer.code.substr(1, 1),
-      char2: this.customersService.editingCustomer.code.substr(2, 1),
+      char0: this.data.customer.code.slice(0, 1),
+      char1: this.data.customer.code.slice(1, 2),
+      char2: this.data.customer.code.slice(2, 3),
     }),
-    name: this.customersService.editingCustomer.name,
-    address: this.customersService.editingCustomer.address || '',
-    taxCode: this.customersService.editingCustomer.taxCode || '',
-    phoneNumber: this.customersService.editingCustomer.phoneNumber || '',
+    name: this.data.customer.name,
+    fullName: this.data.customer.fullName,
+    address: this.data.customer.address || '',
+    taxCode: this.data.customer.taxCode || '',
+    phoneNumber: this.data.customer.phoneNumber || '',
   });
 
   constructor(
     private dialogRef: MatDialog,
+    @Inject(MAT_DIALOG_DATA) public data: { customer: Customer },
     private fb: FormBuilder,
-    private customersService: CustomersService
+    private customersService: CustomersService,
+    private customersConnectorService: CustomersConnectorService
   ) {}
 
   ngOnInit(): void {}
@@ -35,12 +40,18 @@ export class EditCustomerDialogComponent implements OnInit {
   }
 
   onUpdateCustomer({ value }: { value: CustomerDto }) {
-    console.log({
-      ...value,
-      code:
-        this.createCustomerForm.controls['code'].value.char0 +
-        this.createCustomerForm.controls['code'].value.char1 +
-        this.createCustomerForm.controls['code'].value.char2,
-    });
+    const submitCustomer = {
+      address: value.address,
+      taxCode: value.taxCode,
+      phoneNumber: value.phoneNumber,
+    };
+
+    if (value.id) {
+      this.customersConnectorService
+        .update(value.id, submitCustomer)
+        .subscribe((data: any) => {
+          this.customersService.reload();
+        });
+    }
   }
 }

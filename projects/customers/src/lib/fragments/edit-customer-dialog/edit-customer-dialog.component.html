@@ -8,8 +8,8 @@
     <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
   </button>
   <form
-    [formGroup]="createCustomerForm"
-    (ngSubmit)="onUpdateCustomer(createCustomerForm)"
+    [formGroup]="editCustomerForm"
+    (ngSubmit)="onUpdateCustomer(editCustomerForm)"
   >
     <div class="mb-3">
       <label for="customer-code-0" class="d-block semi-bold mb-2 required"

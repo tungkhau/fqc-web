@@ -23,9 +23,9 @@ export class CustomersConnectorService {
     return this.backendService.connect(url, Method.POST, customerDto);
   }
 
-  update(customerId: string): Observable<any> {
+  update(customerId: string, customerDto: CustomerDto): Observable<any> {
     const url = this.serviceName + '/customers/' + customerId;
-    return this.backendService.connect(url, Method.PUT);
+    return this.backendService.connect(url, Method.PUT, customerDto);
   }
 
   delete(customerId: string): Observable<any> {

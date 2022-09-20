@@ -1,5 +1,5 @@
 <div class="dialog create-staff-dialog position-relative">
-  <h4 class="dialog-title semi-bold">VÔ HIỆU HÓA NHÂN VIÊN</h4>
+  <h4 class="dialog-title semi-bold">XÓA KHÁCH HÀNG</h4>
   <button
     astButtonIcon
     class="position-absolute top-0 right-0"
@@ -15,7 +15,7 @@
   ></ast-tbl-info>
   <form>
     <p class="text-center">
-      Xác nhận vô hiệu hóa nhân viên <b>{{ dialogData.staff.name }}</b
+      Xác nhận xóa khách hàng <b>{{ dialogData.customer.name }}</b
       >?
     </p>
     <div class="buttons d-flex justify-content-center">
@@ -24,6 +24,7 @@
         type="submit"
         class="submit-btn"
         backgroundColor="#DF5B5B"
+        (click)="onDelete()"
       >
         Xác nhận
       </button>
