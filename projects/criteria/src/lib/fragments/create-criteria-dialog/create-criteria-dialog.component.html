@@ -29,11 +29,11 @@
         >Phân loại đánh giá</label
       >
       <div
-        formArrayName="checkpoints"
-        class="checkpoints d-flex justify-content-center flex-column align-items-center"
+        formArrayName="grades"
+        class="grades d-flex justify-content-center flex-column align-items-center"
       >
         <div
-          *ngFor="let checkpoint of getCheckpoints().controls; let i = index"
+          *ngFor="let grade of getGrades().controls; let i = index"
           class="d-flex justify-content-between align-items-center w-100"
         >
           <p class="d-inline-block">Loại {{ getChar(i) }}:</p>
@@ -43,16 +43,20 @@
             type="text"
             class="form-control d-inline-block"
             readonly
-            [value]="getCheckpoints().controls[i - 1]?.value || 0"
+            [value]="getGrades().controls[i - 1]?.value.allowedPoint || 0"
           />
-          <p class="d-inline-block">-</p>
-          <input
-            astInput
-            id="customer-phone"
-            type="text"
-            class="form-control d-inline-block"
-            [formControlName]="i"
-          />
+          <p class="d-inline-block">–</p>
+
+          <div [formGroupName]="i">
+            <input
+              astInput
+              id="customer-phone"
+              type="text"
+              class="form-control d-inline-block"
+              formControlName="allowedPoint"
+            />
+          </div>
+
           <select [value]="unit" (change)="onChangeUnit($event)">
             <option value="YARD">100đ/yard</option>
             <option value="METER">100đ/yard^2</option>
@@ -64,16 +68,16 @@
           <button
             astButtonOutline
             class="mt-4"
-            (click)="onRemoveCheckpoint()"
-            *ngIf="getCheckpoints().controls.length > 1"
+            (click)="onRemoveGrade()"
+            *ngIf="getGrades().controls.length > 1"
           >
             <i class="fa-solid fa-minus"></i>
           </button>
           <button
             astButtonOutline
             class="mt-4"
-            (click)="onAddCheckpoint()"
-            *ngIf="getCheckpoints().controls.length <= 4"
+            (click)="onAddGrade()"
+            *ngIf="getGrades().controls.length <= 4"
           >
             <i class="fa-solid fa-plus"></i>
           </button>

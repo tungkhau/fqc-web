@@ -64,7 +64,7 @@ export class CustomersComponent implements OnInit {
       isSortable: false,
     },
     {
-      name: 'phone',
+      name: 'phoneNumber',
       header: 'ĐIỆN THOẠI',
       width: '15%',
       headerAlign: 'left',
@@ -90,33 +90,52 @@ export class CustomersComponent implements OnInit {
   ngOnInit(): void {
     this.customersConnectorService.fetch().subscribe((data) => {
       this.customerData.next(data);
+      console.log(data);
+
+      data.map((c, i) => {
+        this.buttons.push([
+          {
+            title: '',
+            text: 'Chỉnh sửa',
+            icon: 'fa-pen-to-square',
+            iconColor: null,
+            action: () => {
+              this.onEditCustomer(i);
+            },
+          },
+          {
+            title: '',
+            text: 'Xóa',
+            icon: 'fa-trash',
+            iconColor: null,
+            action: () => {
+              this.onDeleteCustomer(i);
+            },
+          },
+        ]);
+
+        return c;
+      });
+    });
+
+    this.customersService.reloadSubject.subscribe(() => {
+      this.ngOnInit();
     });
   }
 
-  fakeCustomer = {
-    id: '123',
-    code: '123',
-    name: '123',
-    fullName: '123',
-    address: '123',
-    taxCode: '123',
-    phoneNumber: '123',
-  };
   onOpenCreateCustomerDialog() {
-    const dialogRef = this.dialog.open(DeleteCustomerDialogComponent, {
-      data: { customer: this.fakeCustomer },
-    });
+    const dialogRef = this.dialog.open(CreateCustomerDialogComponent);
   }
 
   onEditCustomer(i: number) {
     const dialogRef = this.dialog.open(EditCustomerDialogComponent, {
-      data: { customer: this.fakeCustomer },
+      data: { customer: this.customerData.value[i] },
     });
   }
 
   onDeleteCustomer(i: number) {
     const dialogRef = this.dialog.open(DeleteCustomerDialogComponent, {
-      data: { customer: this.fakeCustomer },
+      data: { customer: this.customerData.value[i] },
     });
   }
 }

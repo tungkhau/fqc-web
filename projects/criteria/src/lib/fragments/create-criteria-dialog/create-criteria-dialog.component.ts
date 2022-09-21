@@ -13,7 +13,7 @@ export class CreateCriteriaDialogComponent implements OnInit {
   createCriteriaForm = this.fb.group({
     name: '',
     unit: 'YARD',
-    checkpoints: this.fb.array([100]),
+    grades: this.fb.array([this.fb.group({ allowedPoint: 15 })]),
   });
 
   unit: string = 'YARD';
@@ -23,9 +23,7 @@ export class CreateCriteriaDialogComponent implements OnInit {
     private fb: FormBuilder,
     private criteriaConnectorService: CriteriaConnectorService,
     private criteriaService: CriteriaService
-  ) {
-    console.log(this.getCheckpoints().controls);
-  }
+  ) {}
 
   ngOnInit(): void {}
 
@@ -33,8 +31,8 @@ export class CreateCriteriaDialogComponent implements OnInit {
     this.dialogRef.closeAll();
   }
 
-  getCheckpoints() {
-    return this.createCriteriaForm.get('checkpoints') as FormArray;
+  getGrades() {
+    return this.createCriteriaForm.get('grades') as FormArray;
   }
 
   getChar(i: number) {
@@ -46,23 +44,21 @@ export class CreateCriteriaDialogComponent implements OnInit {
     this.createCriteriaForm.get('unit')?.setValue($event.target.value);
   }
 
-  onRemoveCheckpoint() {
-    this.getCheckpoints().removeAt(this.getCheckpoints().length - 1);
+  onRemoveGrade() {
+    this.getGrades().removeAt(this.getGrades().length - 1);
   }
 
-  onAddCheckpoint() {
-    this.getCheckpoints().push(this.fb.control(0));
+  onAddGrade() {
+    this.getGrades().push(this.fb.group({ allowedPoint: 0 }));
   }
 
   onCreateCriteria({ value }: { value: any }) {
-    const submitCriteria = {};
+    const submitCriteria = { ...value };
 
     this.criteriaConnectorService
       .create(submitCriteria)
       .subscribe((data: any) => {
         console.log(data);
-
-        // this.customersService.addCustomer(value);
         this.criteriaService.reload();
       });
   }

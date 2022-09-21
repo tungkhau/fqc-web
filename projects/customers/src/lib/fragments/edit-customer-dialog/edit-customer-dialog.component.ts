@@ -46,12 +46,15 @@ export class EditCustomerDialogComponent implements OnInit {
       phoneNumber: value.phoneNumber,
     };
 
-    if (value.id) {
-      this.customersConnectorService
-        .update(value.id, submitCustomer)
-        .subscribe((data: any) => {
-          this.customersService.reload();
-        });
-    }
+    console.log(value);
+
+    this.customersConnectorService
+      .update(this.data.customer.id, submitCustomer)
+      .subscribe((data: any) => {
+        this.customersService.reload();
+        if (data.result === 'OK') {
+          this.onCloseDialog();
+        }
+      });
   }
 }

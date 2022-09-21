@@ -18,9 +18,10 @@ export class CreateCustomerDialogComponent implements OnInit {
       char2: '',
     }),
     name: '',
+    fullName: '',
     address: '',
     taxCode: '',
-    phone: '',
+    phoneNumber: '',
   });
 
   constructor(
@@ -48,10 +49,10 @@ export class CreateCustomerDialogComponent implements OnInit {
     this.customersConnectorService
       .create(submitCustomer)
       .subscribe((data: any) => {
-        console.log(data);
-
         // this.customersService.addCustomer(value);
         this.customersService.reload();
+
+        if (data.result === 'OK') this.onCloseDialog();
       });
   }
 }

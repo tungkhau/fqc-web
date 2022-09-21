@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { Column, Button } from 'ast';
 import { BehaviorSubject } from 'rxjs';
+import { CriteriaService } from './criteria.service';
+import { CriteriaConnectorService } from './data/services/criteria-connector.service';
 import { CreateCriteriaDialogComponent } from './fragments/create-criteria-dialog/create-criteria-dialog.component';
 
 @Component({
@@ -53,9 +56,22 @@ export class CriteriaComponent implements OnInit {
 
   buttons: Button[][] = [];
 
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog,
+    private criteriaConnectorService: CriteriaConnectorService,
+    private criteriaService: CriteriaService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.activatedRoute.data.subscribe((data) => {
+      this.criteriaConnectorService.setApiUrl(data['apiUrl']);
+    });
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.criteriaConnectorService.fetch().subscribe((data) => {
+      console.log(data);
+    });
+  }
 
   onCreateCriteria(): void {
     const dialog = this.dialog.open(CreateCriteriaDialogComponent);
