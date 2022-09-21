@@ -14,22 +14,22 @@ export class CustomersConnectorService {
   }
 
   fetch(): Observable<CustomerDto[]> {
-    const url = this.serviceName + '/customers';
+    const url = 'customers';
     return this.backendService.connect(url, Method.GET);
   }
 
   create(customerDto: CustomerDto): Observable<any> {
-    const url = this.serviceName + '/customers';
+    const url = 'customers';
     return this.backendService.connect(url, Method.POST, customerDto);
   }
 
   update(customerId: string, customerDto: CustomerDto): Observable<any> {
-    const url = this.serviceName + '/customers/' + customerId;
+    const url = 'customers/' + customerId;
     return this.backendService.connect(url, Method.PUT, customerDto);
   }
 
   delete(customerId: string): Observable<any> {
-    const url = this.serviceName + '/customers/' + customerId;
+    const url = 'customers/' + customerId;
     return this.backendService.connect(url, Method.DELETE);
   }
 }

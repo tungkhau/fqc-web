@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormArray, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CriteriaService } from '../../criteria.service';
 import { CriteriaConnectorService } from '../../data/services/criteria-connector.service';
@@ -12,8 +12,11 @@ import { CriteriaConnectorService } from '../../data/services/criteria-connector
 export class CreateCriteriaDialogComponent implements OnInit {
   createCriteriaForm = this.fb.group({
     name: '',
-    checkpoints: this.fb.array([0]),
+    unit: 'YARD',
+    checkpoints: this.fb.array([100]),
   });
+
+  unit: string = 'YARD';
 
   constructor(
     private dialogRef: MatDialog,
@@ -21,13 +24,34 @@ export class CreateCriteriaDialogComponent implements OnInit {
     private criteriaConnectorService: CriteriaConnectorService,
     private criteriaService: CriteriaService
   ) {
-    console.log(this.createCriteriaForm.get('checkpoints'));
+    console.log(this.getCheckpoints().controls);
   }
 
   ngOnInit(): void {}
 
   onCloseDialog() {
     this.dialogRef.closeAll();
+  }
+
+  getCheckpoints() {
+    return this.createCriteriaForm.get('checkpoints') as FormArray;
+  }
+
+  getChar(i: number) {
+    return String.fromCharCode(65 + i);
+  }
+
+  onChangeUnit($event: any) {
+    this.unit = $event.target.value;
+    this.createCriteriaForm.get('unit')?.setValue($event.target.value);
+  }
+
+  onRemoveCheckpoint() {
+    this.getCheckpoints().removeAt(this.getCheckpoints().length - 1);
+  }
+
+  onAddCheckpoint() {
+    this.getCheckpoints().push(this.fb.control(0));
   }
 
   onCreateCriteria({ value }: { value: any }) {

@@ -12,6 +12,6 @@ export class CustomerAPIResolver implements Resolve<string> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): string | Observable<string> | Promise<string> {
-    return 'http://192.168.1.8:8000';
+    return 'http://localhost:8000';
   }
 }

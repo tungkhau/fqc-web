@@ -1,5 +1,5 @@
 <div class="dialog create-customer-dialog position-relative">
-  <h4 class="dialog-title">TẠO KHÁCH HÀNG MỚI</h4>
+  <h4 class="dialog-title semi-bold">TẠO TIÊU CHUẨN</h4>
   <button
     astButtonIcon
     class="position-absolute top-0 right-0"
@@ -28,16 +28,61 @@
       <label for="customer-phone" class="d-block semi-bold mb-2"
         >Phân loại đánh giá</label
       >
-      <div formArrayName="checkpoints">
-        <input *ngFor="let checkpoint of
-        createCriteriaForm.get("checkpoints").controls; let i = index" astInput
-        id="customer-phone" type="text" class="form-control w-100"
-        [formControlName]="i" />
+      <div
+        formArrayName="checkpoints"
+        class="checkpoints d-flex justify-content-center flex-column align-items-center"
+      >
+        <div
+          *ngFor="let checkpoint of getCheckpoints().controls; let i = index"
+          class="d-flex justify-content-between align-items-center w-100"
+        >
+          <p class="d-inline-block">Loại {{ getChar(i) }}:</p>
+          <input
+            astInput
+            id="customer-phone"
+            type="text"
+            class="form-control d-inline-block"
+            readonly
+            [value]="getCheckpoints().controls[i - 1]?.value || 0"
+          />
+          <p class="d-inline-block">-</p>
+          <input
+            astInput
+            id="customer-phone"
+            type="text"
+            class="form-control d-inline-block"
+            [formControlName]="i"
+          />
+          <select [value]="unit" (change)="onChangeUnit($event)">
+            <option value="YARD">100đ/yard</option>
+            <option value="METER">100đ/yard^2</option>
+            <option value="SQUARE_YARD">100đ/m</option>
+            <option value="SQUARE_METER">100đ/m^2</option>
+          </select>
+        </div>
+        <div>
+          <button
+            astButtonOutline
+            class="mt-4"
+            (click)="onRemoveCheckpoint()"
+            *ngIf="getCheckpoints().controls.length > 1"
+          >
+            <i class="fa-solid fa-minus"></i>
+          </button>
+          <button
+            astButtonOutline
+            class="mt-4"
+            (click)="onAddCheckpoint()"
+            *ngIf="getCheckpoints().controls.length <= 4"
+          >
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
       </div>
     </div>
 
     <div class="submit-btn">
-      <button astButtonSolid type="submit" class="w-100">Tạo khách hàng</button>
+      <button astButtonSolid type="submit" class="w-100">Tạo tiêu chuẩn</button>
     </div>
   </form>
 </div>
