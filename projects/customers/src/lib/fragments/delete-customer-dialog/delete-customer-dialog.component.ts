@@ -46,6 +46,7 @@ export class DeleteCustomerDialogComponent implements OnInit {
       .delete(this.dialogData.customer.id)
       .subscribe((data) => {
         this.customersService.reload();
+        this.onCloseDialog();
       });
   }
 }
