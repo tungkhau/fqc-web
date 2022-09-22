@@ -1,5 +1,5 @@
 <div class="dialog create-staff-dialog position-relative">
-  <h4 class="dialog-title semi-bold">XÓA TIÊU CHUẨN</h4>
+  <h4 class="dialog-title semi-bold">THÔNG TIN TIÊU CHUẨN</h4>
   <button
     astButtonIcon
     class="position-absolute top-0 right-0"
@@ -14,19 +14,15 @@
     dataWidth="60%"
   ></ast-tbl-info>
   <form>
-    <p class="text-center confirm-text">
-      Xác nhận xóa tiêu chuẩn <b>{{ dialogData.criteria.name }}</b
-      >?
-    </p>
     <div class="buttons d-flex justify-content-center">
       <button
         astButtonSolid
-        type="submit"
+        type="button"
         class="submit-btn"
         backgroundColor="#DF5B5B"
         (click)="onDelete()"
       >
-        Xác nhận
+        Xóa
       </button>
       <button
         astButtonOutline

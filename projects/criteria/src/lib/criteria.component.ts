@@ -8,6 +8,7 @@ import { CriteriaDto } from './data/dtos/criteria-dto';
 import { CriteriaConnectorService } from './data/services/criteria-connector.service';
 import { CreateCriteriaDialogComponent } from './fragments/create-criteria-dialog/create-criteria-dialog.component';
 import { DeleteCriteriaDialogComponent } from './fragments/delete-criteria-dialog/delete-criteria-dialog.component';
+import { ViewCriteriaDialogComponent } from './fragments/view-criteria-dialog/view-criteria-dialog.component';
 
 @Component({
   selector: 'cri-criteria',
@@ -87,6 +88,12 @@ export class CriteriaComponent implements OnInit {
 
   onDeleteCriteria(i: number): void {
     const dialog = this.dialog.open(DeleteCriteriaDialogComponent, {
+      data: { criteria: this.criteriaList[i] },
+    });
+  }
+
+  onViewCriteria(i: number): void {
+    const dialog = this.dialog.open(ViewCriteriaDialogComponent, {
       data: { criteria: this.criteriaList[i] },
     });
   }

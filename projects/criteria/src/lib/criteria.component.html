@@ -47,6 +47,14 @@
                   <button
                     mat-menu-item
                     type="button"
+                    (click)="onViewCriteria(i)"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                    <span class="ms-2">Xem thông tin</span>
+                  </button>
+                  <button
+                    mat-menu-item
+                    type="button"
                     (click)="onDeleteCriteria(i)"
                   >
                     <i class="fa-solid fa-trash"></i>

@@ -3,19 +3,20 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CriteriaService } from '../../criteria.service';
 import { CriteriaDto } from '../../data/dtos/criteria-dto';
 import { CriteriaConnectorService } from '../../data/services/criteria-connector.service';
+import { DeleteCriteriaDialogComponent } from '../delete-criteria-dialog/delete-criteria-dialog.component';
 
 @Component({
-  selector: 'epl-delete-criteria-dialog',
-  templateUrl: './delete-criteria-dialog.component.html',
-  styleUrls: ['./delete-criteria-dialog.component.scss'],
+  selector: 'epl-view-criteria-dialog',
+  templateUrl: './view-criteria-dialog.component.html',
+  styleUrls: ['./view-criteria-dialog.component.scss'],
 })
-export class DeleteCriteriaDialogComponent implements OnInit {
+export class ViewCriteriaDialogComponent implements OnInit {
   data: any[] = [{ ...this.dialogData.criteria }];
   headers: string[] = ['ID', 'TÊN TC'];
   attributes: string[] = ['id', 'name'];
 
   constructor(
-    private dialogRef: MatDialog,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public dialogData: { criteria: CriteriaDto },
     private criteriaConnectorService: CriteriaConnectorService,
     private criteriaService: CriteriaService
@@ -38,16 +39,12 @@ export class DeleteCriteriaDialogComponent implements OnInit {
   }
 
   onCloseDialog() {
-    this.dialogRef.closeAll();
+    this.dialog.closeAll();
   }
 
   onDelete() {
-    if (this.dialogData.criteria.id)
-      this.criteriaConnectorService
-        .delete(this.dialogData.criteria.id)
-        .subscribe((data) => {
-          this.criteriaService.reload();
-          if (data.result === 'OK') this.onCloseDialog();
-        });
+    const dialog = this.dialog.open(DeleteCriteriaDialogComponent, {
+      data: { criteria: this.dialogData.criteria },
+    });
   }
 }
