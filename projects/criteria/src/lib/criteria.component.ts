@@ -4,8 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Column, Button } from 'ast';
 import { BehaviorSubject } from 'rxjs';
 import { CriteriaService } from './criteria.service';
+import { CriteriaDto } from './data/dtos/criteria-dto';
 import { CriteriaConnectorService } from './data/services/criteria-connector.service';
 import { CreateCriteriaDialogComponent } from './fragments/create-criteria-dialog/create-criteria-dialog.component';
+import { DeleteCriteriaDialogComponent } from './fragments/delete-criteria-dialog/delete-criteria-dialog.component';
 
 @Component({
   selector: 'cri-criteria',
@@ -56,6 +58,8 @@ export class CriteriaComponent implements OnInit {
 
   buttons: Button[][] = [];
 
+  criteriaList: CriteriaDto[] = [];
+
   constructor(
     private dialog: MatDialog,
     private criteriaConnectorService: CriteriaConnectorService,
@@ -69,11 +73,21 @@ export class CriteriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.criteriaConnectorService.fetch().subscribe((data) => {
-      console.log(data);
+      this.criteriaList = [...data];
+    });
+
+    this.criteriaService.reloadSubject.subscribe(() => {
+      this.ngOnInit();
     });
   }
 
   onCreateCriteria(): void {
     const dialog = this.dialog.open(CreateCriteriaDialogComponent);
+  }
+
+  onDeleteCriteria(i: number): void {
+    const dialog = this.dialog.open(DeleteCriteriaDialogComponent, {
+      data: { criteria: this.criteriaList[i] },
+    });
   }
 }

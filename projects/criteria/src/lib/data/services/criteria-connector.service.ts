@@ -14,22 +14,22 @@ export class CriteriaConnectorService {
   }
 
   fetch(): Observable<CriteriaDto[]> {
-    const url = 'criterials';
+    const url = 'criteria';
     return this.backendService.connect(url, Method.GET);
   }
 
-  create(customerDto: CriteriaDto): Observable<any> {
-    const url = 'criterials';
-    return this.backendService.connect(url, Method.POST, customerDto);
+  create(criteriaDto: CriteriaDto): Observable<any> {
+    const url = 'criteria';
+    return this.backendService.connect(url, Method.POST, criteriaDto);
   }
 
-  update(customerId: string, customerDto: CriteriaDto): Observable<any> {
-    const url = 'criterials/' + customerId;
-    return this.backendService.connect(url, Method.PUT, customerDto);
+  update(criteriaId: string, criteriaDto: CriteriaDto): Observable<any> {
+    const url = 'criteria/' + criteriaId;
+    return this.backendService.connect(url, Method.PUT, criteriaDto);
   }
 
-  delete(customerId: string): Observable<any> {
-    const url = 'criterials/' + customerId;
+  delete(criteriaId: string): Observable<any> {
+    const url = 'criteria/' + criteriaId;
     return this.backendService.connect(url, Method.DELETE);
   }
 }

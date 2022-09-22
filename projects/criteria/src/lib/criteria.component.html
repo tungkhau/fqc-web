@@ -20,7 +20,7 @@
         </div>
       </ast-card-empty>
     </div>
-    <div class="col col-4 h-100 p-2">
+    <div class="criteria-card col col-4 h-100 p-2">
       <ast-card-empty>
         <div class="d-flex flex-column h-100">
           <div class="d-flex justify-content-between mb-4">
@@ -29,11 +29,37 @@
               <i class="fa-solid fa-circle-plus"></i>
             </button>
           </div>
-          <div class="flex-fill w-100"></div>
+          <div class="flex-fill h-100 w-100 content">
+            <div
+              class="criteria d-flex justify-content-between mb-2"
+              *ngFor="let criteria of criteriaList; let i = index"
+            >
+              <p class="d-inline-block">{{ criteria.name }}</p>
+              <button
+                astButtonIcon
+                type="button"
+                [matMenuTriggerFor]="criteriaOptions"
+              >
+                <i class="fa-solid fa-ellipsis"></i>
+              </button>
+              <mat-menu #criteriaOptions="matMenu">
+                <ng-template matMenuContent>
+                  <button
+                    mat-menu-item
+                    type="button"
+                    (click)="onDeleteCriteria(i)"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                    <span class="ms-2">Xóa</span>
+                  </button>
+                </ng-template>
+              </mat-menu>
+            </div>
+          </div>
         </div>
       </ast-card-empty>
     </div>
-    <div class="col col-4 h-100 p-2">
+    <div class="stamps-card col col-4 h-100 p-2">
       <ast-card-empty>
         <div class="d-flex flex-column h-100">
           <div class="d-flex justify-content-between mb-4">

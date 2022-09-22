@@ -5,6 +5,7 @@ import { BackendService, CoreModule } from 'core';
 import { CriteriaComponent } from './criteria.component';
 import { CriteriaConnectorService } from './data/services/criteria-connector.service';
 import { CreateCriteriaDialogComponent } from './fragments/create-criteria-dialog/create-criteria-dialog.component';
+import { DeleteCriteriaDialogComponent } from './fragments/delete-criteria-dialog/delete-criteria-dialog.component';
 
 const routes = [
   {
@@ -14,7 +15,11 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [CriteriaComponent, CreateCriteriaDialogComponent],
+  declarations: [
+    CriteriaComponent,
+    CreateCriteriaDialogComponent,
+    DeleteCriteriaDialogComponent,
+  ],
   providers: [BackendService, CriteriaConnectorService],
   imports: [AstModule, RouterModule.forChild(routes), CoreModule],
   exports: [CriteriaComponent, RouterModule],
