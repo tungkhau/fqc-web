@@ -1,10 +1,19 @@
-import { Directive, ElementRef, HostListener, OnInit } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  OnInit,
+} from '@angular/core';
 
 @Directive({
-  selector: '[astInput]',
+  selector: '[astSelect]',
 })
-export class InputDirective implements OnInit {
+export class SelectInputDirective implements OnInit {
   constructor(private el: ElementRef) {}
+
+  @HostBinding('class')
+  elementClass = 'ast-select';
 
   ngOnInit(): void {
     this.el.nativeElement.style.borderRadius = '6px';

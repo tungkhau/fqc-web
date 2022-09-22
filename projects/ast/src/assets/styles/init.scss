@@ -32,7 +32,7 @@ table {
   border-spacing: 0;
 }
 
-// label.required::after {
-//   content: " *";
-//   color: $color-danger;
-// }
+label.required::after {
+  content: " *";
+  color: $color-danger;
+}

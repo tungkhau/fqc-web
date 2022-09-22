@@ -17,7 +17,7 @@
     margin-bottom: 1.25rem !important;
   }
 
-  .submit-btn {
+  .confirm-text {
     margin-top: 1.5rem !important;
   }
 
@@ -26,9 +26,9 @@
   }
 
   .buttons {
-    margin-top: 1.5rem;
+    margin-top: 1.5rem !important;
     .submit-btn {
-      margin-right: 2rem;
+      margin-right: 2rem !important;
     }
   }
 }

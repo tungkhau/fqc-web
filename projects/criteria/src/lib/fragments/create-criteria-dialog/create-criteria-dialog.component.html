@@ -57,11 +57,11 @@
             />
           </div>
 
-          <select [value]="unit" (change)="onChangeUnit($event)">
+          <select astSelect [value]="unit" (change)="onChangeUnit($event)">
             <option value="YARD">100đ/yard</option>
-            <option value="METER">100đ/yard^2</option>
-            <option value="SQUARE_YARD">100đ/m</option>
-            <option value="SQUARE_METER">100đ/m^2</option>
+            <option value="SQUARE_YARD">100đ/yard²</option>
+            <option value="METER">100đ/m</option>
+            <option value="SQUARE_METER">100đ/m²</option>
           </select>
         </div>
         <div>

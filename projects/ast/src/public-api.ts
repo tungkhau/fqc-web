@@ -23,3 +23,4 @@ export * from './lib/directives/input/input.directive';
 export * from './lib/directives/button-solid/button-solid.directive';
 export * from './lib/directives/button-icon/button-icon.directive';
 export * from './lib/directives/button-outline/button-outline.directive';
+export * from './lib/directives/select-input/select-input.directive';

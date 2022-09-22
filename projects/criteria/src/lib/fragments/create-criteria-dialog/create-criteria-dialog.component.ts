@@ -13,7 +13,7 @@ export class CreateCriteriaDialogComponent implements OnInit {
   createCriteriaForm = this.fb.group({
     name: '',
     unit: 'YARD',
-    grades: this.fb.array([this.fb.group({ allowedPoint: 15 })]),
+    grades: this.fb.array([this.fb.group({ allowedPoint: 0 })]),
   });
 
   unit: string = 'YARD';

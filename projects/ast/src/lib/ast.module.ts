@@ -10,6 +10,7 @@ import { InputDirective } from './directives/input/input.directive';
 import { ButtonSolidDirective } from './directives/button-solid/button-solid.directive';
 import { ButtonIconDirective } from './directives/button-icon/button-icon.directive';
 import { ButtonOutlineDirective } from './directives/button-outline/button-outline.directive';
+import { SelectInputDirective } from './directives/select-input/select-input.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ButtonOutlineDirective } from './directives/button-outline/button-outli
     ButtonSolidDirective,
     ButtonIconDirective,
     ButtonOutlineDirective,
+    SelectInputDirective,
   ],
   imports: [SharedModule, MaterialModule],
   exports: [
@@ -41,6 +43,7 @@ import { ButtonOutlineDirective } from './directives/button-outline/button-outli
     ButtonSolidDirective,
     ButtonIconDirective,
     ButtonOutlineDirective,
+    SelectInputDirective,
   ],
 })
 export class AstModule {}
