@@ -33,6 +33,7 @@ export class DeleteCriteriaDialogComponent implements OnInit {
         .delete(this.dialogData.criteria.id)
         .subscribe((data) => {
           this.criteriaService.reload();
+          if (data.result === 'OK') this.onCloseDialog();
         });
   }
 }

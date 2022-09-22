@@ -38,6 +38,7 @@ export class CreateStaffDialogComponent implements OnInit {
 
     this.staffsConnectorService.create(submitStaff).subscribe((data: any) => {
       this.staffsService.reload();
+      if (data.result === 'OK') this.onCloseDialog();
     });
   }
 }

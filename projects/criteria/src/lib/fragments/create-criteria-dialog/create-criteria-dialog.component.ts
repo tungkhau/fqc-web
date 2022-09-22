@@ -58,8 +58,8 @@ export class CreateCriteriaDialogComponent implements OnInit {
     this.criteriaConnectorService
       .create(submitCriteria)
       .subscribe((data: any) => {
-        console.log(data);
         this.criteriaService.reload();
+        if (data.result === 'OK') this.onCloseDialog();
       });
   }
 }
