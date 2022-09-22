@@ -71,6 +71,7 @@
             class="mt-4"
             (click)="onRemoveGrade()"
             *ngIf="getGrades().controls.length > 1"
+            color="#B9C8CF"
           >
             <i class="fa-solid fa-minus"></i>
           </button>
@@ -80,6 +81,7 @@
             class="mt-4"
             (click)="onAddGrade()"
             *ngIf="getGrades().controls.length <= 4"
+            color="#B9C8CF"
           >
             <i class="fa-solid fa-plus"></i>
           </button>
