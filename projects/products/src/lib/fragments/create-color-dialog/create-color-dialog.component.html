@@ -1,0 +1,58 @@
+<div class="dialog create-customer-dialog position-relative">
+  <h4 class="dialog-title">TẠO KHÁCH HÀNG MỚI</h4>
+  <button
+    astButtonIcon
+    class="position-absolute top-0 right-0"
+    (click)="onCloseDialog()"
+  >
+    <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
+  </button>
+  <form
+    [formGroup]="createColorForm"
+    (ngSubmit)="onCreateColor(createColorForm)"
+  >
+    <div class="mb-3">
+      <label for="customer-name" class="d-block semi-bold mb-2 required"
+        >Mã màu</label
+      >
+      <input
+        astInput
+        id="customer-name"
+        type="text"
+        class="form-control w-100"
+        formControlName="code"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="customer-name" class="d-block semi-bold mb-2 required"
+        >Tên màu</label
+      >
+      <input
+        astInput
+        id="customer-name"
+        type="text"
+        class="form-control w-100"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="customer-phone" class="d-block semi-bold mb-2"
+        >Khách hàng</label
+      >
+      <select astSelect formControlName="customerId" class="w-100">
+        <option
+          *ngFor="let customer of data.customerList"
+          [value]="customer.id"
+        >
+          {{ customer.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="submit-btn">
+      <button astButtonSolid type="submit" class="w-100">Tạo khách hàng</button>
+    </div>
+  </form>
+</div>

@@ -43,7 +43,7 @@ const routes: Routes = [
     },
     // canLoad: [AuthGuard],
   },
-  { path: '**', redirectTo: 'criteria' },
+  { path: '**', redirectTo: 'products' },
 ];
 
 @NgModule({

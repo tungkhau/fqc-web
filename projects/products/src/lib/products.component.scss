@@ -1,9 +1,29 @@
 @import "../assets/styles/styles.scss";
 
-.products-page {
+.criteria-page {
+  padding: 0.5rem;
   .container {
-    padding: 8px;
     display: grid;
-    grid-template-columns: 6fr 6fr;
+    grid-template-columns: 7fr 5fr;
+    grid-template-rows: 50% 50%;
+
+    .product-card {
+      grid-row: span 2;
+      height: 100%;
+    }
+
+    .criteria-card {
+      height: 100%;
+    }
+
+    .content {
+      // overflow-y: scroll;
+    }
+
+    .criteria {
+      background-color: $color-l5;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
   }
 }
