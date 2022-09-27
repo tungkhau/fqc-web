@@ -25,11 +25,19 @@
         <div class="d-flex flex-column h-100">
           <div class="d-flex justify-content-between mb-4">
             <h3 class="bold d-inline-block">MẶT HÀNG</h3>
-            <button astButtonIcon size="lg">
+            <button astButtonIcon size="lg" (click)="onCreateFabric()">
               <i class="fa-solid fa-circle-plus"></i>
             </button>
           </div>
-          <div class="flex-fill h-100 w-100 content"></div>
+          <div class="flex-fill h-100 w-100 content">
+            <ast-tbl-data
+              [data]="fabricsData"
+              [buttons]="fabricsButtons"
+              [columns]="fabricsTableColumns"
+              [pageSizeOptions]="[3]"
+            >
+            </ast-tbl-data>
+          </div>
         </div>
       </ast-card-empty>
     </div>
@@ -47,6 +55,7 @@
               [data]="colorsData"
               [buttons]="colorsButtons"
               [columns]="colorsTableColumns"
+              [pageSizeOptions]="[3]"
             >
             </ast-tbl-data>
           </div>

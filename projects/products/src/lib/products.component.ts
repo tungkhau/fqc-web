@@ -6,8 +6,11 @@ import { BehaviorSubject } from 'rxjs';
 import { CustomerDto } from './data/dtos/customer-dto';
 import { ColorsConnectorService } from './data/services/colors-connector.service';
 import { CustomersConnectorService } from './data/services/customers-connector.service';
+import { FabricsConnectorService } from './data/services/fabrics-connector.service';
 import { CreateColorDialogComponent } from './fragments/create-color-dialog/create-color-dialog.component';
+import { CreateFabricDialogComponent } from './fragments/create-fabric-dialog/create-fabric-dialog.component';
 import { DeleteColorDialogComponent } from './fragments/delete-color-dialog/delete-color-dialog.component';
+import { DeleteFabricDialogComponent } from './fragments/delete-fabric-dialog/delete-fabric-dialog.component';
 import { ProductsService } from './products.service';
 
 @Component({
@@ -59,6 +62,40 @@ export class ProductsComponent implements OnInit {
 
   productsButtons: Button[][] = [];
 
+  fabricsData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+
+  fabricsTableColumns: Column[] = [
+    {
+      name: 'code',
+      header: 'MÃ HÀNG',
+      width: '20%',
+      headerAlign: 'left',
+      dataAlign: 'left',
+      isFilterable: false,
+      isSortable: true,
+    },
+    {
+      name: 'name',
+      header: 'MẶT HÀNG',
+      width: '30%',
+      headerAlign: 'left',
+      dataAlign: 'left',
+      isFilterable: false,
+      isSortable: true,
+    },
+    {
+      name: 'customerName',
+      header: 'KHÁCH HÀNG',
+      width: '30%',
+      headerAlign: 'left',
+      dataAlign: 'left',
+      isFilterable: true,
+      isSortable: false,
+    },
+  ];
+
+  fabricsButtons: Button[][] = [];
+
   colorsData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
   colorsTableColumns: Column[] = [
@@ -97,6 +134,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private colorsConnectorService: ColorsConnectorService,
+    private fabricsConnectorService: FabricsConnectorService,
     private customersConnectorService: CustomersConnectorService,
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
@@ -133,6 +171,26 @@ export class ProductsComponent implements OnInit {
         return c;
       });
     });
+
+    this.fabricsConnectorService.fetch().subscribe((data) => {
+      this.fabricsData.next([...data]);
+
+      data.map((c, i) => {
+        this.fabricsButtons.push([
+          {
+            title: '',
+            text: 'Xóa',
+            icon: 'fa-trash',
+            iconColor: null,
+            action: () => {
+              this.onDeleteFabric(i);
+            },
+          },
+        ]);
+
+        return c;
+      });
+    });
   }
 
   onCreateColor() {
@@ -144,6 +202,18 @@ export class ProductsComponent implements OnInit {
   onDeleteColor(i: number) {
     const dialogRef = this.dialog.open(DeleteColorDialogComponent, {
       data: { color: this.colorsData.value[i] },
+    });
+  }
+
+  onCreateFabric() {
+    const dialogRef = this.dialog.open(CreateFabricDialogComponent, {
+      data: { customerList: this.customerList },
+    });
+  }
+
+  onDeleteFabric(i: number) {
+    const dialogRef = this.dialog.open(DeleteFabricDialogComponent, {
+      data: { fabric: this.fabricsData.value[i] },
     });
   }
 }

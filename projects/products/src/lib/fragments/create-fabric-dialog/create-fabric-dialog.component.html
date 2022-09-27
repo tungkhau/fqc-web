@@ -1,5 +1,5 @@
 <div class="dialog create-customer-dialog position-relative">
-  <h4 class="dialog-title">TẠO ÁNH MÀU MỚI</h4>
+  <h4 class="dialog-title">TẠO MẶT HÀNG MỚI</h4>
   <button
     astButtonIcon
     class="position-absolute top-0 right-0"
@@ -8,12 +8,12 @@
     <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
   </button>
   <form
-    [formGroup]="createColorForm"
-    (ngSubmit)="onCreateColor(createColorForm)"
+    [formGroup]="createFabricForm"
+    (ngSubmit)="onCreateFabric(createFabricForm)"
   >
     <div class="mb-3">
       <label for="customer-name" class="d-block semi-bold mb-2 required"
-        >Mã màu</label
+        >Mã hàng</label
       >
       <input
         astInput
@@ -26,7 +26,7 @@
 
     <div class="mb-3">
       <label for="customer-name" class="d-block semi-bold mb-2 required"
-        >Tên màu</label
+        >Mặt hàng</label
       >
       <input
         astInput
@@ -52,7 +52,7 @@
     </div>
 
     <div class="submit-btn">
-      <button astButtonSolid type="submit" class="w-100">Tạo ánh màu</button>
+      <button astButtonSolid type="submit" class="w-100">Tạo mặt hàng</button>
     </div>
   </form>
 </div>
