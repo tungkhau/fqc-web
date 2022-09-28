@@ -5,17 +5,17 @@
         <div class="d-flex flex-column h-100">
           <div class="d-flex justify-content-between mb-4">
             <h3 class="bold d-inline-block">SẢN PHẨM</h3>
-            <button astButtonIcon size="lg">
+            <button astButtonIcon size="lg" (click)="onCreateProduct()">
               <i class="fa-solid fa-circle-plus"></i>
             </button>
           </div>
           <div class="flex-fill w-100">
-            <!-- <ast-tbl-data
-              [data]="productData"
-              [buttons]="buttons"
-              [columns]="productTableColumns"
+            <ast-tbl-data
+              [data]="productsData"
+              [buttons]="productsButtons"
+              [columns]="productsTableColumns"
             >
-            </ast-tbl-data> -->
+            </ast-tbl-data>
           </div>
         </div>
       </ast-card-empty>

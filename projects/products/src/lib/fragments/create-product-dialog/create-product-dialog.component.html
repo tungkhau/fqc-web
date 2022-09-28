@@ -1,0 +1,102 @@
+<div class="dialog create-customer-dialog position-relative">
+  <h4 class="dialog-title">TẠO SẢN PHẨM MỚI</h4>
+  <button
+    astButtonIcon
+    class="position-absolute top-0 right-0"
+    (click)="onCloseDialog()"
+  >
+    <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
+  </button>
+  <form
+    [formGroup]="createProductForm"
+    (ngSubmit)="onCreateProduct(createProductForm)"
+  >
+    <div class="mb-3">
+      <label for="customer" class="d-block semi-bold mb-2 required"
+        >Khách hàng</label
+      >
+      <mat-form-field class="example-full-width w-100" appearance="fill">
+        <input
+          type="text"
+          matInput
+          astInput
+          formControlName="customer"
+          [matAutocomplete]="auto"
+          class="w-100"
+        />
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          [displayWith]="displayCustomerFn"
+          panelWidth="400px"
+        >
+          <mat-option
+            *ngFor="let option of filteredCustomersOptions | async"
+            [value]="option"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="mb-3">
+      <label for="fabric" class="d-block semi-bold mb-2 required"
+        >Mặt hàng</label
+      >
+      <mat-form-field class="example-full-width w-100" appearance="fill">
+        <input
+          type="text"
+          matInput
+          astInput
+          formControlName="fabric"
+          [matAutocomplete]="auto1"
+          class="w-100"
+        />
+        <mat-autocomplete
+          #auto1="matAutocomplete"
+          [displayWith]="displayFabricFn"
+          panelWidth="400px"
+        >
+          <mat-option
+            *ngFor="let option of filteredFabricsOptions | async"
+            [value]="option"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="mb-3">
+      <label for="fabric" class="d-block semi-bold mb-2 required"
+        >Ánh màu</label
+      >
+      <mat-form-field class="example-full-width w-100" appearance="fill">
+        <input
+          type="text"
+          matInput
+          astInput
+          formControlName="color"
+          [matAutocomplete]="auto2"
+          class="w-100"
+        />
+        <mat-autocomplete
+          #auto2="matAutocomplete"
+          [displayWith]="displayColorFn"
+          panelWidth="400px"
+        >
+          <mat-option
+            *ngFor="let option of filteredColorsOptions | async"
+            [value]="option"
+          >
+            {{ option.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div class="submit-btn">
+      <button astButtonSolid type="submit" class="w-100">Tạo sản phẩm</button>
+    </div>
+  </form>
+</div>

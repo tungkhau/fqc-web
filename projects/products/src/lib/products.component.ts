@@ -4,11 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Button, Column } from 'ast';
 import { BehaviorSubject } from 'rxjs';
 import { CustomerDto } from './data/dtos/customer-dto';
+import { ProductDto } from './data/dtos/product-dto';
 import { ColorsConnectorService } from './data/services/colors-connector.service';
 import { CustomersConnectorService } from './data/services/customers-connector.service';
 import { FabricsConnectorService } from './data/services/fabrics-connector.service';
+import { ProductsConnectorService } from './data/services/products-connector.service';
 import { CreateColorDialogComponent } from './fragments/create-color-dialog/create-color-dialog.component';
 import { CreateFabricDialogComponent } from './fragments/create-fabric-dialog/create-fabric-dialog.component';
+import { CreateProductDialogComponent } from './fragments/create-product-dialog/create-product-dialog.component';
 import { DeleteColorDialogComponent } from './fragments/delete-color-dialog/delete-color-dialog.component';
 import { DeleteFabricDialogComponent } from './fragments/delete-fabric-dialog/delete-fabric-dialog.component';
 import { ProductsService } from './products.service';
@@ -23,34 +26,43 @@ export class ProductsComponent implements OnInit {
 
   productsTableColumns: Column[] = [
     {
-      name: 'id',
-      header: 'ID',
-      width: '20%',
-      headerAlign: 'left',
-      dataAlign: 'left',
-      isFilterable: false,
-      isSortable: true,
-    },
-    {
-      name: 'code',
+      name: 'fabricCode',
       header: 'MÃ HÀNG',
-      width: '20%',
+      width: '15%',
       headerAlign: 'left',
       dataAlign: 'left',
       isFilterable: false,
       isSortable: true,
     },
     {
-      name: 'name',
+      name: 'fabricName',
       header: 'MẶT HÀNG',
-      width: '30%',
+      width: '20%',
       headerAlign: 'left',
       dataAlign: 'left',
       isFilterable: true,
       isSortable: false,
     },
     {
-      name: 'customer',
+      name: 'colorCode',
+      header: 'MÃ MÀU',
+      width: '15%',
+      headerAlign: 'left',
+      dataAlign: 'left',
+      isFilterable: false,
+      isSortable: true,
+    },
+    {
+      name: 'colorName',
+      header: 'TÊN MÀU',
+      width: '20%',
+      headerAlign: 'left',
+      dataAlign: 'left',
+      isFilterable: true,
+      isSortable: false,
+    },
+    {
+      name: 'customerName',
       header: 'KHÁCH HÀNG',
       width: '20%',
       headerAlign: 'left',
@@ -136,6 +148,7 @@ export class ProductsComponent implements OnInit {
     private colorsConnectorService: ColorsConnectorService,
     private fabricsConnectorService: FabricsConnectorService,
     private customersConnectorService: CustomersConnectorService,
+    private productsConnectorService: ProductsConnectorService,
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
     private productsService: ProductsService
@@ -191,6 +204,17 @@ export class ProductsComponent implements OnInit {
         return c;
       });
     });
+
+    this.productsConnectorService.fetch().subscribe((data) => {
+      this.productsData.next([
+        ...data.map((p: ProductDto) => {
+          let customerName = this.fabricsData.value.filter(
+            (f) => f.code === p.fabricCode
+          )[0].customerName;
+          return { ...p, customerName: customerName };
+        }),
+      ]);
+    });
   }
 
   onCreateColor() {
@@ -214,6 +238,16 @@ export class ProductsComponent implements OnInit {
   onDeleteFabric(i: number) {
     const dialogRef = this.dialog.open(DeleteFabricDialogComponent, {
       data: { fabric: this.fabricsData.value[i] },
+    });
+  }
+
+  onCreateProduct() {
+    const dialogRef = this.dialog.open(CreateProductDialogComponent, {
+      data: {
+        customerList: this.customerList,
+        colorList: [...this.colorsData.value],
+        fabricList: [...this.fabricsData.value],
+      },
     });
   }
 }
