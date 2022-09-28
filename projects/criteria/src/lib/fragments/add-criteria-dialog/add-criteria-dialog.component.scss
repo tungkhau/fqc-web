@@ -50,6 +50,11 @@
       border: none;
     }
 
+    .label:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
     .label.chose {
       border: 3px solid $color-l1;
     }

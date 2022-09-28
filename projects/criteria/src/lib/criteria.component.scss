@@ -25,5 +25,24 @@
       padding: 8px 12px;
       border-radius: 6px;
     }
+
+    .label-container {
+      display: grid;
+      height: 100%;
+      gap: 8px;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 50% 50%;
+
+      .label {
+        background-color: #c0c0c0;
+        border-radius: 8px;
+        border: none;
+      }
+
+      .label:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
   }
 }

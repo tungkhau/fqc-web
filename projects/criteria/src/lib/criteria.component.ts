@@ -109,43 +109,34 @@ export class CriteriaComponent implements OnInit {
   ngOnInit(): void {
     this.criteriaConnectorService.fetch().subscribe((data) => {
       this.criteriaList = [...data];
-    });
 
-    this.fabricConnectorService.fetch().subscribe((data) => {
-      this.fabricList = [...data];
-    });
+      this.fabricConnectorService.fetch().subscribe((data) => {
+        this.fabricList = [...data];
 
-    this.productConnectorService.fetch().subscribe((data) => {
-      this.productData.next([
-        ...data.map((p, i) => {
-          let customerName = this.fabricList.filter(
-            (f) => (f.code = p.fabricCode)
-          )[0].customerName;
+        this.productConnectorService.fetch().subscribe((data) => {
+          this.productData.next([
+            ...data.map((p, i) => {
+              let customerName = this.fabricList.filter(
+                (f) => (f.code = p.fabricCode)
+              )[0].customerName;
 
-          this.buttons.push([
-            {
-              title: '',
-              text: 'Gán tiêu chuẩn ',
-              icon: 'fa-trash',
-              iconColor: null,
-              action: () => {
-                this.onAddCriterion(i);
-              },
-            },
-            {
-              title: '',
-              text: 'Xóa',
-              icon: 'fa-trash',
-              iconColor: null,
-              action: () => {
-                // this.onDeleteProduct(i);
-              },
-            },
+              this.buttons.push([
+                {
+                  title: '',
+                  text: 'Gán tiêu chuẩn ',
+                  icon: 'fa-plus',
+                  iconColor: null,
+                  action: () => {
+                    this.onAddCriterion(i);
+                  },
+                },
+              ]);
+
+              return { ...p, customerName };
+            }),
           ]);
-
-          return { ...p, customerName };
-        }),
-      ]);
+        });
+      });
     });
 
     this.criteriaService.reloadSubject.subscribe(() => {

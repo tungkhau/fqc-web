@@ -13,10 +13,6 @@ import { DeleteCriteriaDialogComponent } from '../delete-criteria-dialog/delete-
   styleUrls: ['./add-criteria-dialog.component.scss'],
 })
 export class AddCriteriaDialogComponent implements OnInit {
-  data: any[] = [{ ...this.dialogData.criteria }];
-  headers: string[] = ['ID', 'TÊN TC'];
-  attributes: string[] = ['id', 'name'];
-
   constructor(
     private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA)
@@ -25,21 +21,7 @@ export class AddCriteriaDialogComponent implements OnInit {
     private criteriaService: CriteriaService
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.data);
-    this.data[0].grades?.map((g: any, i: number) => {
-      this.headers.push(`LOẠI ${this.getAscii(i)}`);
-      this.attributes.push(`type${i}`);
-      this.data[0][`type${i}`] = `${
-        i > 0 ? this.data[0].grades[i - 1].allowedPoint : 0
-      } – ${g.allowedPoint}`;
-      return g;
-    });
-  }
-
-  getAscii(i: number) {
-    return String.fromCodePoint(65 + i);
-  }
+  ngOnInit(): void {}
 
   onCloseDialog() {
     this.dialog.closeAll();
