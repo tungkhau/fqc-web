@@ -11,6 +11,7 @@ import { CreateFabricDialogComponent } from './fragments/create-fabric-dialog/cr
 import { CreateProductDialogComponent } from './fragments/create-product-dialog/create-product-dialog.component';
 import { DeleteColorDialogComponent } from './fragments/delete-color-dialog/delete-color-dialog.component';
 import { DeleteFabricDialogComponent } from './fragments/delete-fabric-dialog/delete-fabric-dialog.component';
+import { DeleteProductDialogComponent } from './fragments/delete-product-dialog/delete-product-dialog.component';
 import { ProductsComponent } from './products.component';
 
 const routes = [
@@ -28,6 +29,7 @@ const routes = [
     CreateFabricDialogComponent,
     DeleteFabricDialogComponent,
     CreateProductDialogComponent,
+    DeleteProductDialogComponent,
   ],
   providers: [
     BackendService,

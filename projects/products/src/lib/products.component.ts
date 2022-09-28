@@ -14,6 +14,7 @@ import { CreateFabricDialogComponent } from './fragments/create-fabric-dialog/cr
 import { CreateProductDialogComponent } from './fragments/create-product-dialog/create-product-dialog.component';
 import { DeleteColorDialogComponent } from './fragments/delete-color-dialog/delete-color-dialog.component';
 import { DeleteFabricDialogComponent } from './fragments/delete-fabric-dialog/delete-fabric-dialog.component';
+import { DeleteProductDialogComponent } from './fragments/delete-product-dialog/delete-product-dialog.component';
 import { ProductsService } from './products.service';
 
 @Component({
@@ -207,10 +208,23 @@ export class ProductsComponent implements OnInit {
 
     this.productsConnectorService.fetch().subscribe((data) => {
       this.productsData.next([
-        ...data.map((p: ProductDto) => {
+        ...data.map((p: ProductDto, i) => {
           let customerName = this.fabricsData.value.filter(
             (f) => f.code === p.fabricCode
           )[0].customerName;
+
+          this.productsButtons.push([
+            {
+              title: '',
+              text: 'Xóa',
+              icon: 'fa-trash',
+              iconColor: null,
+              action: () => {
+                this.onDeleteProduct(i);
+              },
+            },
+          ]);
+
           return { ...p, customerName: customerName };
         }),
       ]);
@@ -248,6 +262,12 @@ export class ProductsComponent implements OnInit {
         colorList: [...this.colorsData.value],
         fabricList: [...this.fabricsData.value],
       },
+    });
+  }
+
+  onDeleteProduct(i: number) {
+    const dialogRef = this.dialog.open(DeleteProductDialogComponent, {
+      data: { product: this.productsData.value[i] },
     });
   }
 }
