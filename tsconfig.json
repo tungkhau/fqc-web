@@ -12,6 +12,7 @@
       "core": ["projects/core/src/public-api"],
       "criteria": ["projects/criteria/src/public-api"],
       "customers": ["projects/customers/src/public-api"],
+      "lots": ["projects/lots/src/public-api"],
       "staffs": ["projects/staffs/src/public-api"],
       "products": ["projects/products/src/public-api"]
     },

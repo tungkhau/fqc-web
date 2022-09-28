@@ -349,6 +349,37 @@
           }
         }
       }
+    },
+    "lots": {
+      "projectType": "library",
+      "root": "projects/lot",
+      "sourceRoot": "projects/lot/src",
+      "prefix": "lot",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/lot/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lot/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/lot/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lot/src/test.ts",
+            "tsConfig": "projects/lot/tsconfig.spec.json",
+            "karmaConfig": "projects/lot/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "fqc-web"

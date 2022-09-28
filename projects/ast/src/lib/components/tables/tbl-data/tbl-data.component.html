@@ -102,8 +102,26 @@
           textAlign: column.dataAlign || 'center'
         }"
       >
-        <p>
-          {{ element[column.name] }}
+        <p
+          [ngStyle]="{
+            color:
+              element[column.name] &&
+              element[column.name] !== column.secondaryText?.content
+                ? column.primaryText?.color
+                : column.secondaryText?.color,
+            fontWeight:
+              element[column.name] &&
+              element[column.name] !== column.secondaryText?.content
+                ? column.primaryText?.fontWeight
+                : column.secondaryText?.fontWeight,
+            fontStyle:
+              element[column.name] &&
+              element[column.name] !== column.secondaryText?.content
+                ? column.primaryText?.fontStyle
+                : column.secondaryText?.fontStyle
+          }"
+        >
+          {{ column.primaryText?.content || element[column.name] }}
         </p>
       </td>
     </ng-container>

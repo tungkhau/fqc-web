@@ -36,6 +36,14 @@ const routes: Routes = [
     // canLoad: [AuthGuard],
   },
   {
+    path: 'lots',
+    loadChildren: () => import('lots').then((m) => m.LotsModule),
+    resolve: {
+      apiUrl: CustomerAPIResolver,
+    },
+    // canLoad: [AuthGuard],
+  },
+  {
     path: 'staffs',
     loadChildren: () => import('staffs').then((m) => m.StaffsModule),
     resolve: {

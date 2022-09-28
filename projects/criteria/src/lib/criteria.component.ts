@@ -31,6 +31,10 @@ export class CriteriaComponent implements OnInit {
       dataAlign: 'left',
       isFilterable: false,
       isSortable: true,
+      primaryText: {
+        color: '#56717E',
+        fontWeight: '700',
+      },
     },
     {
       name: 'fabricName',
@@ -49,6 +53,10 @@ export class CriteriaComponent implements OnInit {
       dataAlign: 'left',
       isFilterable: true,
       isSortable: false,
+      primaryText: {
+        color: '#56717E',
+        fontWeight: '700',
+      },
     },
     {
       name: 'colorName',
@@ -76,6 +84,16 @@ export class CriteriaComponent implements OnInit {
       dataAlign: 'left',
       isFilterable: true,
       isSortable: false,
+      primaryText: {
+        color: '#56717E',
+        fontWeight: '700',
+      },
+      secondaryText: {
+        color: '#B9C8CF',
+        content: 'Chưa có',
+        fontWeight: '600',
+        fontStyle: 'italic',
+      },
     },
     {
       name: 'label',
@@ -85,6 +103,16 @@ export class CriteriaComponent implements OnInit {
       dataAlign: 'left',
       isFilterable: true,
       isSortable: false,
+      primaryText: {
+        color: '#56717E',
+        fontWeight: '700',
+      },
+      secondaryText: {
+        color: '#B9C8CF',
+        content: 'Chưa có',
+        fontWeight: '600',
+        fontStyle: 'italic',
+      },
     },
   ];
 
@@ -132,7 +160,12 @@ export class CriteriaComponent implements OnInit {
                 },
               ]);
 
-              return { ...p, customerName };
+              return {
+                ...p,
+                customerName,
+                criterionName: p.criterionName ? p.criterionName : 'Chưa có',
+                label: p.label ? p.label : 'Chưa có',
+              };
             }),
           ]);
         });

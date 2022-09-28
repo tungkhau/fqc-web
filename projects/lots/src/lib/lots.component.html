@@ -1,0 +1,41 @@
+<div class="criteria-page h-100">
+  <div class="container h-100">
+    <div class="product-card col col-8 h-100 p-2">
+      <ast-card-empty>
+        <div class="d-flex flex-column h-100">
+          <div class="d-flex justify-content-between mb-4">
+            <h3 class="bold d-inline-block">SẢN PHẨM</h3>
+          </div>
+          <div class="flex-fill w-100">
+            <ast-tbl-data
+              [data]="productsData"
+              [buttons]="productsButtons"
+              [columns]="productTableColumns"
+            >
+            </ast-tbl-data>
+          </div>
+        </div>
+      </ast-card-empty>
+    </div>
+    <div class="criteria-card col col-4 h-100 p-2">
+      <ast-card-empty>
+        <div class="d-flex flex-column h-100">
+          <div class="d-flex justify-content-between mb-4">
+            <h3 class="bold d-inline-block">LOT</h3>
+            <button astButtonIcon size="lg">
+              <i class="fa-solid fa-circle-plus"></i>
+            </button>
+          </div>
+          <div class="flex-fill h-100 w-100 content">
+            <ast-tbl-data
+              [data]="lotsData"
+              [buttons]="lotsButtons"
+              [columns]="lotTableColumns"
+            >
+            </ast-tbl-data>
+          </div>
+        </div>
+      </ast-card-empty>
+    </div>
+  </div>
+</div>
