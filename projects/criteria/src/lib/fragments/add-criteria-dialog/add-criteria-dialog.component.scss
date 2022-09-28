@@ -1,0 +1,78 @@
+@import "../../../assets/styles/styles.scss";
+
+.create-staff-dialog {
+  #staff-code-0,
+  #staff-code-1,
+  #staff-code-2 {
+    text-align: center;
+    width: 40px;
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+.dialog {
+  width: 800px;
+
+  .dialog-title {
+    margin-bottom: 1.25rem !important;
+  }
+
+  .confirm-text {
+    margin-top: 1.5rem !important;
+  }
+
+  b {
+    color: $color-theme;
+  }
+
+  .buttons {
+    margin-top: 1.5rem !important;
+    .submit-btn {
+      margin-right: 2rem !important;
+    }
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+  }
+
+  .label-container {
+    display: grid;
+    grid-template-columns: 188px 188px;
+    gap: 8px;
+    grid-template-rows: 188px 188px;
+
+    .label {
+      background-color: #c0c0c0;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .label.chose {
+      border: 3px solid $color-l1;
+    }
+
+    .label-4 {
+      background-color: transparent;
+    }
+  }
+
+  .criteria-container {
+    height: 384px;
+  }
+}
+
+.choose-criteria-btn {
+  width: 100%;
+  text-align: left;
+  color: black !important;
+  background-color: $color-l5 !important;
+  font-weight: $fw-regular !important;
+  font-size: 14px !important;
+}
+
+.choose-criteria-btn.chose {
+  background-color: $color-l4 !important;
+}

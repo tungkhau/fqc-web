@@ -6,8 +6,6 @@ import { CriteriaDto } from './data/dtos/criteria-dto';
   providedIn: 'root',
 })
 export class CriteriaService {
-  constructor() {}
-
   reloadSubject: Subject<boolean> = new Subject<boolean>();
 
   reload() {

@@ -5,7 +5,11 @@ import { Column, Button } from 'ast';
 import { BehaviorSubject } from 'rxjs';
 import { CriteriaService } from './criteria.service';
 import { CriteriaDto } from './data/dtos/criteria-dto';
+import { FabricDto } from './data/dtos/fabric-dto';
 import { CriteriaConnectorService } from './data/services/criteria-connector.service';
+import { FabricsConnectorService } from './data/services/fabrics-connector.service';
+import { ProductsConnectorService } from './data/services/products-connector.service';
+import { AddCriteriaDialogComponent } from './fragments/add-criteria-dialog/add-criteria-dialog.component';
 import { CreateCriteriaDialogComponent } from './fragments/create-criteria-dialog/create-criteria-dialog.component';
 import { DeleteCriteriaDialogComponent } from './fragments/delete-criteria-dialog/delete-criteria-dialog.component';
 import { ViewCriteriaDialogComponent } from './fragments/view-criteria-dialog/view-criteria-dialog.component';
@@ -20,36 +24,63 @@ export class CriteriaComponent implements OnInit {
 
   productTableColumns: Column[] = [
     {
-      name: 'id',
-      header: 'ID',
-      width: '20%',
-      headerAlign: 'left',
-      dataAlign: 'left',
-      isFilterable: false,
-      isSortable: true,
-    },
-    {
-      name: 'code',
+      name: 'fabricCode',
       header: 'MÃ HÀNG',
-      width: '20%',
+      width: '12%',
       headerAlign: 'left',
       dataAlign: 'left',
       isFilterable: false,
       isSortable: true,
     },
     {
-      name: 'name',
+      name: 'fabricName',
       header: 'MẶT HÀNG',
-      width: '30%',
+      width: '12%',
       headerAlign: 'left',
       dataAlign: 'left',
       isFilterable: true,
       isSortable: false,
     },
     {
-      name: 'customer',
+      name: 'colorCode',
+      header: 'MÃ MÀU',
+      width: '12%',
+      headerAlign: 'left',
+      dataAlign: 'left',
+      isFilterable: true,
+      isSortable: false,
+    },
+    {
+      name: 'colorName',
+      header: 'TÊN MÀU',
+      width: '12%',
+      headerAlign: 'left',
+      dataAlign: 'left',
+      isFilterable: true,
+      isSortable: false,
+    },
+    {
+      name: 'customerName',
       header: 'KHÁCH HÀNG',
-      width: '20%',
+      width: '15%',
+      headerAlign: 'left',
+      dataAlign: 'left',
+      isFilterable: true,
+      isSortable: false,
+    },
+    {
+      name: 'criterionName',
+      header: 'TIÊU CHUẨN',
+      width: '15%',
+      headerAlign: 'left',
+      dataAlign: 'left',
+      isFilterable: true,
+      isSortable: false,
+    },
+    {
+      name: 'label',
+      header: 'MẪU TEM',
+      width: '12%',
       headerAlign: 'left',
       dataAlign: 'left',
       isFilterable: true,
@@ -60,10 +91,13 @@ export class CriteriaComponent implements OnInit {
   buttons: Button[][] = [];
 
   criteriaList: CriteriaDto[] = [];
+  fabricList: FabricDto[] = [];
 
   constructor(
     private dialog: MatDialog,
     private criteriaConnectorService: CriteriaConnectorService,
+    private productConnectorService: ProductsConnectorService,
+    private fabricConnectorService: FabricsConnectorService,
     private criteriaService: CriteriaService,
     private activatedRoute: ActivatedRoute
   ) {
@@ -75,6 +109,43 @@ export class CriteriaComponent implements OnInit {
   ngOnInit(): void {
     this.criteriaConnectorService.fetch().subscribe((data) => {
       this.criteriaList = [...data];
+    });
+
+    this.fabricConnectorService.fetch().subscribe((data) => {
+      this.fabricList = [...data];
+    });
+
+    this.productConnectorService.fetch().subscribe((data) => {
+      this.productData.next([
+        ...data.map((p, i) => {
+          let customerName = this.fabricList.filter(
+            (f) => (f.code = p.fabricCode)
+          )[0].customerName;
+
+          this.buttons.push([
+            {
+              title: '',
+              text: 'Gán tiêu chuẩn ',
+              icon: 'fa-trash',
+              iconColor: null,
+              action: () => {
+                this.onAddCriterion(i);
+              },
+            },
+            {
+              title: '',
+              text: 'Xóa',
+              icon: 'fa-trash',
+              iconColor: null,
+              action: () => {
+                // this.onDeleteProduct(i);
+              },
+            },
+          ]);
+
+          return { ...p, customerName };
+        }),
+      ]);
     });
 
     this.criteriaService.reloadSubject.subscribe(() => {
@@ -95,6 +166,12 @@ export class CriteriaComponent implements OnInit {
   onViewCriteria(i: number): void {
     const dialog = this.dialog.open(ViewCriteriaDialogComponent, {
       data: { criteria: this.criteriaList[i] },
+    });
+  }
+
+  onAddCriterion(i: number): void {
+    const dialog = this.dialog.open(AddCriteriaDialogComponent, {
+      data: { criteria: this.criteriaList, product: this.productData.value[i] },
     });
   }
 }
