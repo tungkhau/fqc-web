@@ -1,0 +1,54 @@
+<div class="dialog create-customer-dialog position-relative">
+  <h4 class="dialog-title semi-bold">TẠO LOT</h4>
+  <button
+    astButtonIcon
+    class="position-absolute top-0 right-0"
+    (click)="onCloseDialog()"
+  >
+    <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
+  </button>
+  <form [formGroup]="measurementForm" (ngSubmit)="onSubmit(measurementForm)">
+    <div class="mb-3">
+      <label for="total-width" class="d-block semi-bold mb-2 required"
+        >Khổ phủ bì</label
+      >
+      <input
+        astInput
+        id="total-width"
+        type="text"
+        class="form-control w-100"
+        formControlName="totalWidth"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="usable-width" class="d-block semi-bold mb-2 required"
+        >Khổ hữu dụng</label
+      >
+      <input
+        astInput
+        id="usable-width"
+        type="text"
+        class="form-control w-100"
+        formControlName="usableWidth"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="area-density" class="d-block semi-bold mb-2 required"
+        >Định lượng</label
+      >
+      <input
+        astInput
+        id="area-density"
+        type="text"
+        class="form-control w-100"
+        formControlName="areaDensity"
+      />
+    </div>
+
+    <div class="submit-btn">
+      <button astButtonSolid type="submit" class="w-100">Xác nhận</button>
+    </div>
+  </form>
+</div>

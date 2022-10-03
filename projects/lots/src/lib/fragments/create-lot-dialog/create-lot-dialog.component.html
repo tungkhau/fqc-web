@@ -19,11 +19,7 @@
       <div class="btn-col"></div>
     </div>
 
-    <form
-      [formGroup]="createLotForm"
-      (ngSubmit)="onCreateLot(createLotForm)"
-      class="p-2 d-flex w-100"
-    >
+    <div class="p-2 d-flex w-100">
       <div class="no-col"></div>
       <div class="code-col">
         <input #codeInput astInput class="w-100" type="text" />
@@ -42,7 +38,7 @@
           <i class="fa-solid fa-plus"></i>
         </button>
       </div>
-    </form>
+    </div>
 
     <div
       formArrayName="lotList"

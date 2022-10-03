@@ -1,0 +1,55 @@
+@import "../../../assets/styles/styles.scss";
+
+.create-customer-dialog {
+  #customer-code-0,
+  #customer-code-1,
+  #customer-code-2 {
+    text-align: center;
+    width: 40px;
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+.dialog {
+  width: 400px;
+
+  .dialog-title {
+    margin-bottom: 1.25rem !important;
+  }
+
+  .submit-btn {
+    margin-top: 1.5rem !important;
+  }
+
+  .table-header {
+    // border: 1px solid $color-l4;
+    background-color: $color-l5;
+    border-radius: 6px;
+    padding: 6px 8px;
+
+    color: $color-d2;
+    font-size: 12px;
+    font-weight: $fw-semi-bold;
+  }
+
+  .no-col,
+  .btn-col {
+    padding: 2px;
+    width: 10%;
+  }
+
+  .code-col,
+  .bo-col,
+  .quantity-col,
+  .weight-col {
+    padding: 2px;
+    width: 20%;
+  }
+
+  .data {
+    .code-col {
+      font-weight: $fw-bold;
+      color: $color-theme;
+    }
+  }
+}

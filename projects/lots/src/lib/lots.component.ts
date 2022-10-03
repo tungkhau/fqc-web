@@ -4,11 +4,15 @@ import { ActivatedRoute } from '@angular/router';
 import { Button, Column } from 'ast';
 import { BehaviorSubject } from 'rxjs';
 import { FabricDto } from './data/dtos/fabric-dto';
+import { MeasurementDto } from './data/dtos/measurement-dto';
 import { FabricsConnectorService } from './data/services/fabrics-connector.service';
 import { LotsConnectorService } from './data/services/lots-connector.service';
+import { MeasurementsConnectorService } from './data/services/measurements-connector.service';
 import { ProductsConnectorService } from './data/services/products-connector.service';
+import { AddMeasurementDialogComponent } from './fragments/add-measurement-dialog/add-measurement-dialog.component';
 import { CreateLotDialogComponent } from './fragments/create-lot-dialog/create-lot-dialog.component';
 import { DeleteLotDialogComponent } from './fragments/delete-lot-dialog/delete-lot-dialog.component';
+import { DeleteMeasurementDialogComponent } from './fragments/delete-measurement-dialog copy/delete-measurement-dialog.component';
 import { LotsService } from './lots.service';
 
 @Component({
@@ -143,10 +147,12 @@ export class LotsComponent implements OnInit {
   lotsButtons: Button[][] = [];
 
   fabricList: FabricDto[] = [];
+  measurementList: MeasurementDto[] = [];
 
   constructor(
     private productConnectorService: ProductsConnectorService,
     private fabricConnectorService: FabricsConnectorService,
+    private measurementsConnectorService: MeasurementsConnectorService,
     private lotsConnectorService: LotsConnectorService,
     private activatedRoute: ActivatedRoute,
     private dialog: MatDialog,
@@ -176,7 +182,7 @@ export class LotsComponent implements OnInit {
               {
                 title: '',
                 text: 'Xem lot',
-                icon: 'fa-plus',
+                icon: 'fa-eye',
                 iconColor: null,
                 action: () => {
                   this.onViewLots(i);
@@ -195,9 +201,39 @@ export class LotsComponent implements OnInit {
       });
     });
 
+    // this.measurementsConnectorService.fetch().subscribe((data) => {
+    //   this.measurementList = [...data];
+    // });
+
     this.lotsConnectorService.fetch().subscribe((data) => {
       this.lotsData.next([
         ...data.map((l, i) => {
+          if (l.measurement) {
+            this.lotsButtons.push([
+              {
+                title: '',
+                text: 'Xóa thông số',
+                icon: 'fa-x',
+                iconColor: null,
+                action: () => {
+                  this.onDeleteMeasurement(i);
+                },
+              },
+            ]);
+          } else {
+            this.lotsButtons.push([
+              {
+                title: '',
+                text: 'Thêm thông số',
+                icon: 'fa-plus',
+                iconColor: null,
+                action: () => {
+                  this.onAddMeasurement(i);
+                },
+              },
+            ]);
+          }
+
           this.lotsButtons.push([
             {
               title: '',
@@ -212,7 +248,10 @@ export class LotsComponent implements OnInit {
 
           return {
             ...l,
-            hasMeasurement: l.measurement !== null ? '✓ Đã có' : '× Chưa có',
+            hasMeasurement: l.measurement ? '✓ Đã có' : '× Chưa có',
+            totalWidth: l.measurement ? l.measurement.totalWidth : null,
+            usableWidth: l.measurement ? l.measurement.usableWidth : null,
+            areaDensity: l.measurement ? l.measurement.areaDensity : null,
           };
         }),
       ]);
@@ -242,6 +281,18 @@ export class LotsComponent implements OnInit {
 
   onDeleteLot(i: number) {
     const dialogRef = this.dialog.open(DeleteLotDialogComponent, {
+      data: { lot: this.lotsData.value[i] },
+    });
+  }
+
+  onAddMeasurement(i: number) {
+    const dialogRef = this.dialog.open(AddMeasurementDialogComponent, {
+      data: { lot: this.lotsData.value[i] },
+    });
+  }
+
+  onDeleteMeasurement(i: number) {
+    const dialogRef = this.dialog.open(DeleteMeasurementDialogComponent, {
       data: { lot: this.lotsData.value[i] },
     });
   }

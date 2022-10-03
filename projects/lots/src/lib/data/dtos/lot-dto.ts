@@ -7,8 +7,11 @@ export interface LotDto {
   productId: string;
   measurement?: {
     id?: string;
-    totalWidth?: string;
-    usableWidth?: string;
-    areaDensity?: string;
+    totalWidth?: number;
+    usableWidth?: number;
+    areaDensity?: number;
   };
+  totalWidth?: number;
+  usableWidth?: number;
+  areaDensity?: number;
 }

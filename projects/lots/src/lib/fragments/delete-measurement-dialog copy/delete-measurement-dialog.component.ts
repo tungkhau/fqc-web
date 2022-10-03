@@ -1,15 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LotDto } from '../../data/dtos/lot-dto';
-import { LotsConnectorService } from '../../data/services/lots-connector.service';
+import { MeasurementDto } from '../../data/dtos/measurement-dto';
+import { MeasurementsConnectorService } from '../../data/services/measurements-connector.service';
 import { LotsService } from '../../lots.service';
 
 @Component({
-  selector: 'epl-delete-lot-dialog',
-  templateUrl: './delete-lot-dialog.component.html',
-  styleUrls: ['./delete-lot-dialog.component.scss'],
+  selector: 'epl-delete-measurement-dialog',
+  templateUrl: './delete-measurement-dialog.component.html',
+  styleUrls: ['./delete-measurement-dialog.component.scss'],
 })
-export class DeleteLotDialogComponent implements OnInit {
+export class DeleteMeasurementDialogComponent implements OnInit {
   data: any[] = [{ ...this.dialogData.lot }];
   headers: string[] = ['MÃ', 'P.O', 'SỐ CÂY', 'SỐ KG'];
   attributes: string[] = [
@@ -22,7 +23,7 @@ export class DeleteLotDialogComponent implements OnInit {
   constructor(
     private dialogRef: MatDialog,
     @Inject(MAT_DIALOG_DATA) public dialogData: { lot: LotDto },
-    private lotsConnectorService: LotsConnectorService,
+    private measurementsConnectorService: MeasurementsConnectorService,
     private lotsService: LotsService
   ) {}
 
@@ -49,9 +50,9 @@ export class DeleteLotDialogComponent implements OnInit {
   }
 
   onDelete() {
-    if (this.dialogData.lot.id)
-      this.lotsConnectorService
-        .delete(this.dialogData.lot.id)
+    if (this.dialogData.lot.measurement?.id)
+      this.measurementsConnectorService
+        .delete(this.dialogData.lot.measurement?.id)
         .subscribe((data) => {
           if (data.result === 'OK') this.onCloseDialog();
 
