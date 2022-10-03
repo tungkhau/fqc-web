@@ -18,17 +18,20 @@
       </ast-card-empty>
     </div>
     <div class="criteria-card col col-4 h-100 p-1">
-      <ast-card-empty>
+      <ast-card-empty *ngIf="currentProductIndex === -1">
+        <h3 class="text-center semi-bold">Chọn sản phẩm để xem lot</h3>
+      </ast-card-empty>
+      <ast-card-empty *ngIf="currentProductIndex > -1">
         <div class="d-flex flex-column h-100">
           <div class="d-flex justify-content-between mb-4">
             <h3 class="bold d-inline-block">LOT</h3>
-            <button astButtonIcon size="lg">
+            <button astButtonIcon size="lg" (click)="onCreateLot()">
               <i class="fa-solid fa-circle-plus"></i>
             </button>
           </div>
           <div class="flex-fill h-100 w-100 content">
             <ast-tbl-data
-              [data]="lotsData"
+              [data]="shownLotsData"
               [buttons]="lotsButtons"
               [columns]="lotTableColumns"
             >

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Button, Column } from 'ast';
 import { BehaviorSubject } from 'rxjs';
@@ -6,6 +7,8 @@ import { FabricDto } from './data/dtos/fabric-dto';
 import { FabricsConnectorService } from './data/services/fabrics-connector.service';
 import { LotsConnectorService } from './data/services/lots-connector.service';
 import { ProductsConnectorService } from './data/services/products-connector.service';
+import { CreateLotDialogComponent } from './fragments/create-lot-dialog/create-lot-dialog.component';
+import { LotsService } from './lots.service';
 
 @Component({
   selector: 'lot-lot',
@@ -44,8 +47,7 @@ export class LotsComponent implements OnInit {
       width: '15%',
       headerAlign: 'left',
       dataAlign: 'left',
-      isFilterable: true,
-      isSortable: false,
+      isSortable: true,
       primaryText: {
         color: '#56717E',
         fontWeight: '700',
@@ -74,12 +76,24 @@ export class LotsComponent implements OnInit {
   productsButtons: Button[][] = [];
 
   lotsData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  shownLotsData: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
   lotTableColumns: Column[] = [
     {
       name: 'code',
       header: 'MÃ LOT',
       width: '20%',
+      headerAlign: 'left',
+      dataAlign: 'left',
+      primaryText: {
+        color: '#56717E',
+        fontWeight: '700',
+      },
+    },
+    {
+      name: 'orderCode',
+      header: 'B.O',
+      width: '15%',
       headerAlign: 'left',
       dataAlign: 'left',
       isFilterable: false,
@@ -95,8 +109,7 @@ export class LotsComponent implements OnInit {
       width: '20%',
       headerAlign: 'left',
       dataAlign: 'left',
-      isFilterable: true,
-      isSortable: false,
+      isSortable: true,
     },
     {
       name: 'expectedWeight',
@@ -104,8 +117,7 @@ export class LotsComponent implements OnInit {
       width: '20%',
       headerAlign: 'left',
       dataAlign: 'left',
-      isFilterable: true,
-      isSortable: false,
+      isSortable: true,
     },
     {
       name: 'hasMeasurement',
@@ -119,6 +131,11 @@ export class LotsComponent implements OnInit {
         color: '#28A745',
         fontWeight: '700',
       },
+      secondaryText: {
+        content: '× Chưa có',
+        color: '#DF5B5B',
+        fontWeight: '700',
+      },
     },
   ];
 
@@ -130,10 +147,16 @@ export class LotsComponent implements OnInit {
     private productConnectorService: ProductsConnectorService,
     private fabricConnectorService: FabricsConnectorService,
     private lotsConnectorService: LotsConnectorService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private dialog: MatDialog,
+    private lotsService: LotsService
   ) {
     this.activatedRoute.data.subscribe((data) => {
       this.lotsConnectorService.setApiUrl(data['apiUrl']);
+    });
+
+    this.lotsService.reloadSubject.subscribe(() => {
+      this.ngOnInit();
     });
   }
 
@@ -151,11 +174,11 @@ export class LotsComponent implements OnInit {
             this.productsButtons.push([
               {
                 title: '',
-                text: 'Gán tiêu chuẩn ',
+                text: 'Xem lot',
                 icon: 'fa-plus',
                 iconColor: null,
                 action: () => {
-                  // this.onAddCriterion(i);
+                  this.onViewLots(i);
                 },
               },
             ]);
@@ -173,16 +196,34 @@ export class LotsComponent implements OnInit {
 
     this.lotsConnectorService.fetch().subscribe((data) => {
       this.lotsData.next([
-        ...data.map((l, i) => {
+        ...data.map((l) => {
           return {
             ...l,
-            hasMeasurement:
-              l.measurement !== null
-                ? '✓ Đã có thông số'
-                : '× Chưa có thông số',
+            hasMeasurement: l.measurement !== null ? '✓ Đã có' : '× Chưa có',
           };
         }),
       ]);
+
+      if (this.currentProductIndex > -1)
+        this.onViewLots(this.currentProductIndex);
+    });
+  }
+
+  onViewLots(i: number) {
+    this.currentProductIndex = i;
+
+    this.shownLotsData.next(
+      this.lotsData.value.filter(
+        (lot) => lot.productId === this.productsData.value[i].id
+      )
+    );
+  }
+
+  currentProductIndex = -1;
+
+  onCreateLot() {
+    const dialogRef = this.dialog.open(CreateLotDialogComponent, {
+      data: { productId: this.productsData.value[this.currentProductIndex].id },
     });
   }
 }

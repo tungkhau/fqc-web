@@ -26,10 +26,10 @@ export class ButtonIconDirective implements OnInit {
 
     this.el.nativeElement.style.fontSize = '22px';
 
-    // if (this.size == 'lg') {
-    //   this.el.nativeElement.style.fontSize = '32px';
-    // } else {
-    // }
+    if (this.size == 'sm') {
+      this.el.nativeElement.style.fontSize = '16px';
+    } else {
+    }
   }
 
   @HostListener('mouseenter') onMouseEnter() {

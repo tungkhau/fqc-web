@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LotsService {
-  constructor() {}
+  reloadSubject: Subject<boolean> = new Subject<boolean>();
+
+  reload() {
+    this.reloadSubject.next(true);
+  }
 }

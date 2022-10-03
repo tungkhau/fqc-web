@@ -4,6 +4,7 @@ export interface LotDto {
   expectedQuantity?: number;
   expectedWeight?: number;
   orderCode?: string;
+  productId: string;
   measurement?: {
     id?: string;
     totalWidth?: string;

@@ -5,7 +5,9 @@ import { BackendService, CoreModule } from 'core';
 import { FabricsConnectorService } from './data/services/fabrics-connector.service';
 import { LotsConnectorService } from './data/services/lots-connector.service';
 import { ProductsConnectorService } from './data/services/products-connector.service';
+import { CreateLotDialogComponent } from './fragments/create-lot-dialog/create-lot-dialog.component';
 import { LotsComponent } from './lots.component';
+
 const routes = [
   {
     path: '',
@@ -13,7 +15,7 @@ const routes = [
   },
 ];
 @NgModule({
-  declarations: [LotsComponent],
+  declarations: [LotsComponent, CreateLotDialogComponent],
   providers: [
     BackendService,
     ProductsConnectorService,

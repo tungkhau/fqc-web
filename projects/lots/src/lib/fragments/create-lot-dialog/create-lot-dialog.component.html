@@ -1,0 +1,70 @@
+<div class="dialog create-customer-dialog position-relative">
+  <h4 class="dialog-title semi-bold">TẠO LOT</h4>
+  <button
+    astButtonIcon
+    class="position-absolute top-0 right-0"
+    (click)="onCloseDialog()"
+  >
+    <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
+  </button>
+  <form [formGroup]="createLotForm" (ngSubmit)="onCreateLot(createLotForm)">
+    <!-- <button astButtonSolid>Thêm</button> -->
+
+    <div class="table-header d-flex w-100">
+      <div class="no-col">STT</div>
+      <div class="code-col">MÃ</div>
+      <div class="bo-col">B.O</div>
+      <div class="quantity-col">SỐ CÂY</div>
+      <div class="weight-col">SỐ KG</div>
+      <div class="btn-col"></div>
+    </div>
+
+    <form
+      [formGroup]="createLotForm"
+      (ngSubmit)="onCreateLot(createLotForm)"
+      class="p-2 d-flex w-100"
+    >
+      <div class="no-col"></div>
+      <div class="code-col">
+        <input #codeInput astInput class="w-100" type="text" />
+      </div>
+      <div class="bo-col">
+        <input #boInput astInput class="w-100" type="text" />
+      </div>
+      <div class="quantity-col">
+        <input #quantityInput astInput class="w-100" type="text" />
+      </div>
+      <div class="weight-col">
+        <input astInput #weightInput class="w-100" type="text" />
+      </div>
+      <div class="btn-col d-flex justify-content-end">
+        <button astButtonIcon size="sm" type="button" (click)="onAddLot()">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+    </form>
+
+    <div
+      formArrayName="lotList"
+      class="data"
+      *ngFor="let lot of getLots().controls; let i = index"
+    >
+      <div class="d-flex w-100 p-2" [formGroupName]="i">
+        <div class="no-col">{{ i + 1 }}</div>
+        <div class="code-col">{{ getLots().controls[i].value.code }}</div>
+        <div class="bo-col">{{ getLots().controls[i].value.orderCode }}</div>
+        <div class="quantity-col">
+          {{ getLots().controls[i].value.expectedQuantity }}
+        </div>
+        <div class="weight-col">
+          {{ getLots().controls[i].value.expectedWeight }}
+        </div>
+        <div class="btn-col d-flex justify-content-end"></div>
+      </div>
+    </div>
+
+    <div class="submit-btn">
+      <button astButtonSolid type="submit" class="w-100">Xác nhận</button>
+    </div>
+  </form>
+</div>
