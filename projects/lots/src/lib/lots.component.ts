@@ -8,6 +8,7 @@ import { FabricsConnectorService } from './data/services/fabrics-connector.servi
 import { LotsConnectorService } from './data/services/lots-connector.service';
 import { ProductsConnectorService } from './data/services/products-connector.service';
 import { CreateLotDialogComponent } from './fragments/create-lot-dialog/create-lot-dialog.component';
+import { DeleteLotDialogComponent } from './fragments/delete-lot-dialog/delete-lot-dialog.component';
 import { LotsService } from './lots.service';
 
 @Component({
@@ -92,7 +93,7 @@ export class LotsComponent implements OnInit {
     },
     {
       name: 'orderCode',
-      header: 'B.O',
+      header: 'P.O',
       width: '15%',
       headerAlign: 'left',
       dataAlign: 'left',
@@ -196,7 +197,19 @@ export class LotsComponent implements OnInit {
 
     this.lotsConnectorService.fetch().subscribe((data) => {
       this.lotsData.next([
-        ...data.map((l) => {
+        ...data.map((l, i) => {
+          this.lotsButtons.push([
+            {
+              title: '',
+              text: 'Xóa',
+              icon: 'fa-trash',
+              iconColor: null,
+              action: () => {
+                this.onDeleteLot(i);
+              },
+            },
+          ]);
+
           return {
             ...l,
             hasMeasurement: l.measurement !== null ? '✓ Đã có' : '× Chưa có',
@@ -224,6 +237,12 @@ export class LotsComponent implements OnInit {
   onCreateLot() {
     const dialogRef = this.dialog.open(CreateLotDialogComponent, {
       data: { productId: this.productsData.value[this.currentProductIndex].id },
+    });
+  }
+
+  onDeleteLot(i: number) {
+    const dialogRef = this.dialog.open(DeleteLotDialogComponent, {
+      data: { lot: this.lotsData.value[i] },
     });
   }
 }
