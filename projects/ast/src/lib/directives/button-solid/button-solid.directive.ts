@@ -26,10 +26,10 @@ export class ButtonSolidDirective implements OnInit {
 
     if (this.size == 'sm') {
       this.el.nativeElement.style.padding = '0.375rem 0.625rem';
-      this.el.nativeElement.style.fontSize = '0.875rem';
+      this.el.nativeElement.style.fontSize = '0.75rem';
     } else {
       this.el.nativeElement.style.padding = '0.5rem 1rem';
-      this.el.nativeElement.style.fontSize = '1rem';
+      this.el.nativeElement.style.fontSize = '0.875rem';
     }
   }
 

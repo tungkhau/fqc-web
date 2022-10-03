@@ -4,7 +4,7 @@ import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class BackendService {
-  public apiUrl = 'http://192.168.1.8:8000';
+  public apiUrl = '';
 
   constructor(private http: HttpClient) {}
 

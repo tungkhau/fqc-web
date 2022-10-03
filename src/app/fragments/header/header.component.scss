@@ -2,10 +2,14 @@
 
 .app-header {
   background-color: #fff;
-
   padding: 0 1rem;
+
+  h6 {
+    line-height: 1.5;
+  }
+
   .header-info {
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
     background-color: #fff;
 
     .logo {
@@ -22,7 +26,7 @@
       list-style: none;
 
       li {
-        padding: 0.5rem 1rem;
+        padding: 0.375rem 0.75rem;
         a {
           text-decoration: none;
           color: $color-l3;

@@ -110,6 +110,8 @@ export class CreateProductDialogComponent implements OnInit {
       colorId: this.createProductForm.value.color.id,
     };
 
+    console.log(submitProduct);
+
     this.productsConnectorService
       .create(submitProduct)
       .subscribe((data: any) => {

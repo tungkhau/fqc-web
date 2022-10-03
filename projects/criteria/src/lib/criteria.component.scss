@@ -1,7 +1,8 @@
 @import "../assets/styles/styles.scss";
 
 .criteria-page {
-  padding: 0.5rem;
+  padding: 0.25rem;
+
   .container {
     display: grid;
     grid-template-columns: 9fr 3fr;
@@ -26,12 +27,12 @@
       border-radius: 6px;
     }
 
-    .label-container {
+    .labels-container {
       display: grid;
       height: 100%;
-      gap: 8px;
-      grid-template-columns: 50% 50%;
-      grid-template-rows: 50% 50%;
+      gap: 16px;
+      grid-template-columns: calc(50% - 8px) calc(50% - 8px);
+      grid-template-rows: calc(50% - 8px) calc(50% - 8px);
 
       .label {
         background-color: #c0c0c0;
@@ -42,6 +43,11 @@
       .label:hover {
         cursor: pointer;
         opacity: 0.8;
+      }
+
+      .label-4 {
+        display: none;
+        background-color: transparent;
       }
     }
   }

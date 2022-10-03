@@ -25,29 +25,39 @@
     </div>
 
     <div class="mb-3">
-      <label for="customer-phone" class="d-block semi-bold mb-2"
-        >Phân loại đánh giá</label
+      <label for="" class="d-block semi-bold mb-2">Phân loại đánh giá</label>
+      <p class="mb-2 d-inline-block type-text">Đơn vị:</p>
+      <select
+        astSelect
+        [value]="unit"
+        (change)="onChangeUnit($event)"
+        class="mb-2"
       >
+        <option value="YARD">100đ/yard</option>
+        <option value="SQUARE_YARD">100đ/yard²</option>
+        <option value="METER">100đ/m</option>
+        <option value="SQUARE_METER">100đ/m²</option>
+      </select>
       <div
-        formArrayName="grades"
+        formArrayName="gradeRequestDTOList"
         class="grades d-flex justify-content-center flex-column align-items-center"
       >
         <div
           *ngFor="let grade of getGrades().controls; let i = index"
-          class="d-flex justify-content-between align-items-center w-100"
+          class="w-100 mb-2"
         >
-          <p class="d-inline-block">Loại {{ getChar(i) }}:</p>
+          <p class="d-inline-block type-text">Loại {{ getChar(i) }}:</p>
           <input
             astInput
             id="customer-phone"
             type="text"
-            class="form-control d-inline-block"
+            class="form-control d-inline-block me-4"
             readonly
             [value]="getGrades().controls[i - 1]?.value.allowedPoint || 0"
           />
-          <p class="d-inline-block">–</p>
+          <p class="d-inline-block me-4">-</p>
 
-          <div [formGroupName]="i">
+          <div [formGroupName]="i" class="d-inline-block">
             <input
               astInput
               id="customer-phone"
@@ -56,18 +66,12 @@
               formControlName="allowedPoint"
             />
           </div>
-
-          <select astSelect [value]="unit" (change)="onChangeUnit($event)">
-            <option value="YARD">100đ/yard</option>
-            <option value="SQUARE_YARD">100đ/yard²</option>
-            <option value="METER">100đ/m</option>
-            <option value="SQUARE_METER">100đ/m²</option>
-          </select>
         </div>
         <div>
           <button
             type="button"
             astButtonOutline
+            size="sm"
             class="mt-4 me-4"
             (click)="onRemoveGrade()"
             *ngIf="getGrades().controls.length > 1"
@@ -78,6 +82,7 @@
           <button
             type="button"
             astButtonOutline
+            size="sm"
             class="mt-4"
             (click)="onAddGrade()"
             *ngIf="getGrades().controls.length <= 4"

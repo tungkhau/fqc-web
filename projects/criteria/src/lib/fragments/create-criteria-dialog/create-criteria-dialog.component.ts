@@ -13,7 +13,7 @@ export class CreateCriteriaDialogComponent implements OnInit {
   createCriteriaForm = this.fb.group({
     name: '',
     unit: 'YARD',
-    grades: this.fb.array([this.fb.group({ allowedPoint: 0 })]),
+    gradeRequestDTOList: this.fb.array([this.fb.group({ allowedPoint: 0 })]),
   });
 
   unit: string = 'YARD';
@@ -32,7 +32,7 @@ export class CreateCriteriaDialogComponent implements OnInit {
   }
 
   getGrades() {
-    return this.createCriteriaForm.get('grades') as FormArray;
+    return this.createCriteriaForm.get('gradeRequestDTOList') as FormArray;
   }
 
   getChar(i: number) {
@@ -54,6 +54,8 @@ export class CreateCriteriaDialogComponent implements OnInit {
 
   onCreateCriteria({ value }: { value: any }) {
     const submitCriteria = { ...value };
+
+    console.log(submitCriteria);
 
     this.criteriaConnectorService
       .create(submitCriteria)

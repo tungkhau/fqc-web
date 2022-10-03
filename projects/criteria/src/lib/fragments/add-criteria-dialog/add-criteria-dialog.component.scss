@@ -41,7 +41,7 @@
   .label-container {
     display: grid;
     grid-template-columns: 188px 188px;
-    gap: 8px;
+    gap: 16px;
     grid-template-rows: 188px 188px;
 
     .label {
@@ -60,6 +60,7 @@
     }
 
     .label-4 {
+      display: none;
       background-color: transparent;
     }
   }

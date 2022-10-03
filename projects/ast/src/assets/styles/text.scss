@@ -3,6 +3,7 @@ $fw-semi-bold: 600;
 $fw-bold: 700;
 
 .txt {
+  font-size: 0.875rem !important;
   font-family: "Open Sans", sans-serif !important;
   margin: 0 !important;
   padding: 0;
@@ -25,22 +26,22 @@ h2 {
 
 h3 {
   @extend .txt;
-  font-size: 1.5rem !important;
+  font-size: 1.25rem !important;
 }
 
 h4 {
   @extend .txt;
-  font-size: 1.25rem !important;
+  font-size: 1.125rem !important;
 }
 
 h5 {
   @extend .txt;
-  font-size: 1rem !important;
+  font-size: 0.875rem !important;
 }
 
 h6 {
   @extend .txt;
-  font-size: 0.875rem !important;
+  font-size: 0.75rem !important;
 }
 
 .bold {

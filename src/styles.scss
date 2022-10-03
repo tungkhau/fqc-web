@@ -56,3 +56,13 @@ body {
 ::ng-deep .mat-form-field-underline {
   display: none;
 }
+
+.mat-option {
+  height: 40px !important;
+}
+
+.mat-option-text {
+  font-size: 0.875rem !important;
+  height: 40px !important;
+  transform: translateY(-3px);
+}
