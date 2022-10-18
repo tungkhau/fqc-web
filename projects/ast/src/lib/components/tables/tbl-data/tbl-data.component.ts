@@ -97,6 +97,8 @@ export class TblDataComponent implements OnInit {
         });
 
       this.filterChanged.subscribe((filter) => {
+        console.log(this.lastFilterOrder);
+        
         // Reset isActive
         for (let k = 0; k < filter.length; ++k) {
           if (filter[k]) {
@@ -106,7 +108,10 @@ export class TblDataComponent implements OnInit {
             }));
           }
         }
-        for (let i = 0; i <= this.lastFilterOrder; ++i) {
+
+        this.dataSource.data = this.data.getValue();
+        
+        for (let i = 1; i <= this.lastFilterOrder; ++i) {
           for (let j = 0; j < filter.length; ++j) {
             if (filter[j] && filter[j].order == i) {
               // Filter data
@@ -119,6 +124,12 @@ export class TblDataComponent implements OnInit {
                     .indexOf(c[key]) >= 0
                 );
               });
+              console.log(i);
+              console.log(j);
+              
+              console.log(this.dataSource.data);
+              
+              
               // Update isActive
               for (let k = 0; k < filter.length; ++k) {
                 if (
@@ -126,6 +137,8 @@ export class TblDataComponent implements OnInit {
                   filter[k] &&
                   (filter[k].order > filter[j].order || filter[k].order == 0)
                 ) {
+                  
+                  
                   filter[k].list = filter[k].list.map((x) => ({
                     ...x,
                     isActive: false,
@@ -136,6 +149,8 @@ export class TblDataComponent implements OnInit {
                       if (x.name === c[keyy]) x.isActive = true;
                     });
                   });
+
+                  console.log(filter);
                 }
               }
             }

@@ -20,7 +20,7 @@ export class ResponseInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap(
         (event) => {
-          if (event instanceof HttpResponse && event.status === 202) {
+          if (event instanceof HttpResponse && event.status === 200) {
             // @ts-ignore
             this.toastrService.success(
               // @ts-ignore
