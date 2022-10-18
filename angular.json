@@ -200,6 +200,9 @@
               "browserTarget": "fqc-web:build:development"
             }
           },
+          "options": {
+            "disableHostCheck": true
+          },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {

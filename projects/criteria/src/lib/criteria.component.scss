@@ -30,19 +30,34 @@
     .labels-container {
       display: grid;
       height: 100%;
-      gap: 16px;
+      gap: 8px;
       grid-template-columns: calc(50% - 8px) calc(50% - 8px);
       grid-template-rows: calc(50% - 8px) calc(50% - 8px);
 
       .label {
-        background-color: #c0c0c0;
+        // background-color: #c0c0c0;
         border-radius: 8px;
-        border: none;
+        border: 1px solid $color-l1;
       }
 
       .label:hover {
         cursor: pointer;
         opacity: 0.8;
+      }
+
+      .label-1 {
+        background-image: url("../assets/images/1.jpg");
+        background-size: cover;
+      }
+
+      .label-2 {
+        background-image: url("../assets/images/2.jpg");
+        background-size: cover;
+      }
+
+      .label-3 {
+        background-image: url("../assets/images/3.jpg");
+        background-size: cover;
       }
 
       .label-4 {

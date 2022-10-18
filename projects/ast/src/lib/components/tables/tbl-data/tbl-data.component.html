@@ -66,20 +66,30 @@
           *ngIf="isShowFilterBox[i]"
         >
           <div class="mb-2">
-            <div *ngFor="let filterItem of filter[i].list; let j = index">
-              <div *ngIf="filterItem.isActive">
-                <input
-                  type="checkbox"
-                  name="{{ column }}"
-                  id="{{ column }}_{{ j }}"
-                  [checked]="filterItem.isChecked"
-                  (change)="toggleFilterOption(i, j)"
-                  class="filter-btn"
-                />
-                <label class="ms-1" for="{{ column }}_{{ j }}">{{
-                  filterItem.name
-                }}</label>
-              </div>
+            <div class="filter-box">
+              <span class="example-list-section">
+                <mat-checkbox
+                  class="example-margin"
+                  [checked]="allComplete[i]"
+                  [indeterminate]="someComplete(i)"
+                  (change)="setAll(i, $event.checked)"
+                >
+                  Tất cả
+                </mat-checkbox>
+              </span>
+              <span class="example-list-section">
+                <ul>
+                  <li *ngFor="let filterItem of filter[i].list; let j = index">
+                    <mat-checkbox
+                      *ngIf="filterItem.isActive"
+                      [(ngModel)]="filterItem.isChecked"
+                      (ngModelChange)="updateAllComplete(i)"
+                    >
+                      {{ filterItem.name }}
+                    </mat-checkbox>
+                  </li>
+                </ul>
+              </span>
             </div>
           </div>
           <button

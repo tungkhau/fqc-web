@@ -106,17 +106,14 @@ export class CreateProductDialogComponent implements OnInit {
 
   onCreateProduct({ value }: { value: any }) {
     const submitProduct: any = {
-      fabricId: this.createProductForm.value.fabric.id,
-      colorId: this.createProductForm.value.color.id,
+      fabricId: this.createProductForm.value.fabric.id || '',
+      colorId: this.createProductForm.value.color.id || '',
     };
-
-    console.log(submitProduct);
 
     this.productsConnectorService
       .create(submitProduct)
       .subscribe((data: any) => {
         this.productsService.reload();
-
         if (data.result === 'OK') this.onCloseDialog();
       });
   }

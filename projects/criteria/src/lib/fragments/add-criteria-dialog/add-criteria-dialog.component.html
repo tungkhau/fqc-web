@@ -31,17 +31,17 @@
       <div class="label-container">
         <button
           type="button"
-          [class]="'label ' + (chosenLabel === 'FIRST' ? 'chose' : '')"
+          [class]="'label label-1 ' + (chosenLabel === 'FIRST' ? 'chose' : '')"
           (click)="onChooseLabel('FIRST')"
         ></button>
         <button
           type="button"
-          [class]="'label ' + (chosenLabel === 'SECOND' ? 'chose' : '')"
+          [class]="'label label-2 ' + (chosenLabel === 'SECOND' ? 'chose' : '')"
           (click)="onChooseLabel('SECOND')"
         ></button>
         <button
           type="button"
-          [class]="'label ' + (chosenLabel === 'THIRD' ? 'chose' : '')"
+          [class]="'label label-3 ' + (chosenLabel === 'THIRD' ? 'chose' : '')"
           (click)="onChooseLabel('THIRD')"
         ></button>
         <button class="label label-4"></button>

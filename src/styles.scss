@@ -66,3 +66,7 @@ body {
   height: 40px !important;
   transform: translateY(-3px);
 }
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #72909f;
+}

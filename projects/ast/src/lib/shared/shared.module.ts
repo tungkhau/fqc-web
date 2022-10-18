@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DndModule } from 'ngx-drag-drop';
 import { RouterModule } from '@angular/router';
@@ -15,6 +15,7 @@ import { MaterialModule } from './material.module';
     ReactiveFormsModule,
     RouterModule,
     MaterialModule,
+    FormsModule,
   ],
 })
 export class SharedModule {}

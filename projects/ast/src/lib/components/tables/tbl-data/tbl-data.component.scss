@@ -97,6 +97,19 @@
       }
     }
 
+    .filter-box {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        padding-left: 12px;
+        margin-top: 4px;
+
+        max-height: 120px;
+        overflow-y: scroll;
+      }
+    }
+
     .filter-btn {
       transform: translateY(-2px);
       font-size: 0.625rem;
