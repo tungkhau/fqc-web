@@ -1,0 +1,10 @@
+<div class="dialog create-staff-dialog position-relative">
+  <button
+    astButtonIcon
+    class="position-absolute top-0 right-0"
+    (click)="onCloseDialog()"
+  >
+    <i class="fa-solid fa-xmark" [style.color]="'#666666'"></i>
+  </button>
+  <img [src]="dialogData.image + '.jpg'" alt="" />
+</div>

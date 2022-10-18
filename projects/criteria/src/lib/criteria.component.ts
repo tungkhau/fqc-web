@@ -13,6 +13,7 @@ import { AddCriteriaDialogComponent } from './fragments/add-criteria-dialog/add-
 import { CreateCriteriaDialogComponent } from './fragments/create-criteria-dialog/create-criteria-dialog.component';
 import { DeleteCriteriaDialogComponent } from './fragments/delete-criteria-dialog/delete-criteria-dialog.component';
 import { ViewCriteriaDialogComponent } from './fragments/view-criteria-dialog/view-criteria-dialog.component';
+import { ViewLabelDialogComponent } from './fragments/view-label-dialog/view-label-dialog.component';
 
 @Component({
   selector: 'cri-criteria',
@@ -160,11 +161,16 @@ export class CriteriaComponent implements OnInit {
                 },
               ]);
 
+              let label = p.label;
+              if (p.label === 'FIRST') label = 'Mẫu tem 1';
+              else if (p.label === 'SECOND') label = 'Mẫu tem 2';
+              else if (p.label === 'THIRD') label = 'Mẫu tem 3';
+
               return {
                 ...p,
                 customerName,
                 criterionName: p.criterionName ? p.criterionName : 'Chưa có',
-                label: p.label ? p.label : 'Chưa có',
+                label: label ? label : 'Chưa có',
               };
             }),
           ]);
@@ -174,6 +180,12 @@ export class CriteriaComponent implements OnInit {
 
     this.criteriaService.reloadSubject.subscribe(() => {
       this.ngOnInit();
+    });
+  }
+
+  onViewLabel(i: number) {
+    const dialog = this.dialog.open(ViewLabelDialogComponent, {
+      data: { image: i },
     });
   }
 

@@ -10,6 +10,7 @@ import { AddCriteriaDialogComponent } from './fragments/add-criteria-dialog/add-
 import { CreateCriteriaDialogComponent } from './fragments/create-criteria-dialog/create-criteria-dialog.component';
 import { DeleteCriteriaDialogComponent } from './fragments/delete-criteria-dialog/delete-criteria-dialog.component';
 import { ViewCriteriaDialogComponent } from './fragments/view-criteria-dialog/view-criteria-dialog.component';
+import { ViewLabelDialogComponent } from './fragments/view-label-dialog/view-label-dialog.component';
 
 const routes = [
   {
@@ -25,6 +26,7 @@ const routes = [
     DeleteCriteriaDialogComponent,
     ViewCriteriaDialogComponent,
     AddCriteriaDialogComponent,
+    ViewLabelDialogComponent,
   ],
   providers: [
     BackendService,

@@ -27,7 +27,7 @@
             </button>
           </div>
           <div class="flex-fill h-100 w-100 content">
-            <div
+            <!-- <div
               class="criteria d-flex justify-content-between mb-2"
               *ngFor="let criteria of criteriaList; let i = index"
             >
@@ -59,7 +59,7 @@
                   </button>
                 </ng-template>
               </mat-menu>
-            </div>
+            </div> -->
           </div>
         </div>
       </ast-card-empty>
@@ -72,9 +72,27 @@
           </div>
           <div class="flex-fill w-100">
             <div class="labels-container">
-              <button type="button" class="label label-1"></button>
-              <button type="button" class="label label-2"></button>
-              <button type="button" class="label label-3"></button>
+              <div
+                class="label-wrapper label-wrapper-1"
+                (click)="onViewLabel(1)"
+              >
+                <div class="label-overlay">1</div>
+                <div class="label label-1"></div>
+              </div>
+              <div
+                class="label-wrapper label-wrapper-2"
+                (click)="onViewLabel(2)"
+              >
+                <div class="label-overlay">2</div>
+                <div class="label label-2"></div>
+              </div>
+              <div
+                class="label-wrapper label-wrapper-3"
+                (click)="onViewLabel(3)"
+              >
+                <div class="label-overlay">3</div>
+                <div class="label label-3"></div>
+              </div>
               <button class="label label-4"></button>
             </div>
           </div>

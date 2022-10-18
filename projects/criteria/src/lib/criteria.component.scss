@@ -35,14 +35,38 @@
       grid-template-rows: calc(50% - 8px) calc(50% - 8px);
 
       .label {
-        // background-color: #c0c0c0;
         border-radius: 8px;
         border: 1px solid $color-l1;
+        width: 100%;
+        height: 100%;
       }
 
       .label:hover {
         cursor: pointer;
-        opacity: 0.8;
+      }
+
+      .label-overlay {
+        display: none;
+      }
+
+      .label-wrapper {
+        position: relative;
+        border-radius: 8px;
+      }
+
+      .label-wrapper:hover .label-overlay {
+        display: flex;
+        position: absolute;
+        border-radius: 8px;
+
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        color: #fff;
+        font-size: 32px;
+
+        justify-content: center;
+        align-items: center;
       }
 
       .label-1 {

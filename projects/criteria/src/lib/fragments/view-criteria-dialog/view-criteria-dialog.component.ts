@@ -23,7 +23,6 @@ export class ViewCriteriaDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.data);
     this.data[0].grades?.map((g: any, i: number) => {
       this.headers.push(`LOẠI ${this.getAscii(i)}`);
       this.attributes.push(`type${i}`);
@@ -32,6 +31,8 @@ export class ViewCriteriaDialogComponent implements OnInit {
       } – ${g.allowedPoint}`;
       return g;
     });
+
+    console.log(this.data);
   }
 
   getAscii(i: number) {

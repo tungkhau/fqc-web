@@ -1,0 +1,32 @@
+@import "../../../assets/styles/styles.scss";
+
+.create-staff-dialog {
+  #staff-code-0,
+  #staff-code-1,
+  #staff-code-2 {
+    text-align: center;
+    width: 40px;
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+.dialog {
+  .dialog-title {
+    margin-bottom: 1.25rem !important;
+  }
+
+  .confirm-text {
+    margin-top: 1.5rem !important;
+  }
+
+  b {
+    color: $color-theme;
+  }
+
+  .buttons {
+    margin-top: 1.5rem !important;
+    .submit-btn {
+      margin-right: 2rem !important;
+    }
+  }
+}
